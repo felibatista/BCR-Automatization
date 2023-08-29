@@ -1,8 +1,10 @@
 package com.felipe.bcr;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Case {
+    private static HashMap<Integer, Case> cases = new HashMap<Integer, Case>();
     private int id;
     private String description;
     private ArrayList<String> preCondition;
@@ -14,7 +16,13 @@ public class Case {
     public Case(){
 
     }
+    public Case(int id, String description, Status status) {
+        this.id = id;
+        this.description = description;
+        this.status = status;
 
+        cases.put(id, this);
+    }
     public Case(int id, String description, ArrayList<String> preCondition, ArrayList<String> postCondition, ArrayList<String> steps, ArrayList<String> expectedResults, Status status) {
         this.id = id;
         this.description = description;
@@ -23,6 +31,12 @@ public class Case {
         this.steps = steps;
         this.expectedResults = expectedResults;
         this.status = status;
+
+        cases.put(id, this);
+    }
+
+    public static Case getCaseByID(int id){
+        return cases.get(id);
     }
 
     public int getId() {
@@ -92,5 +106,13 @@ public class Case {
                 ", expectedResults=" + expectedResults +
                 ", status=" + status +
                 '}';
+    }
+
+    public static HashMap<Integer, Case> getCases() {
+        return cases;
+    }
+
+    public void setCases(HashMap<Integer, Case> cases) {
+        Case.cases = cases;
     }
 }
