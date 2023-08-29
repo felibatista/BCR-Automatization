@@ -24,7 +24,7 @@ Caso 1:
  */
 public class Case1 {
     public static void run(){
-        Case case1 = new Case(
+        Case caseToTest = new Case(
                 1,
                 "Validar que se pueda iniciar sesión en la página principal",
                 Status.NOT_EXECUTED
@@ -33,13 +33,13 @@ public class Case1 {
         try {
             WebElement joinButton = Main.getDriver().findElement(By.xpath("//a[contains(@data-link-id, 'login')]"));
         } catch (NoSuchElementException e) {
-            case1.setStatus(Status.BLOCKED);
+            caseToTest.setStatus(Status.BLOCKED);
             return;
         } catch (Exception e) {
-            case1.setStatus(Status.FAILED);
+            caseToTest.setStatus(Status.FAILED);
             return;
         }
 
-        case1.setStatus(Status.PASSED);
+        caseToTest.setStatus(Status.PASSED);
     }
 }
