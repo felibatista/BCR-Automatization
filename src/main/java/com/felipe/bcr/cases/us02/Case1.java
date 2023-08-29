@@ -30,6 +30,14 @@ public class Case1 {
                 Status.NOT_EXECUTED
         );
 
+        //prevent to run if user is logged
+        if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
+            return;
+        }
+
+
+
         try {
             WebElement joinButton = Main.getDriver().findElement(By.xpath("//a[contains(@data-link-id, 'login')]"));
         } catch (NoSuchElementException e) {

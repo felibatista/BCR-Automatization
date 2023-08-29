@@ -16,7 +16,7 @@ public class LogginController {
 
     public boolean checkIsLoggedWithAvatar() {
         try {
-            Main.getDriver().findElement(By.xpath("//span[contains(@class, 'nav-header-avatar-user')]"))
+            Main.getDriver().findElement(By.xpath("//span[contains(@class, 'nav-header-avatar-user')]"));
         } catch (Exception e) {
             return false;
         }
