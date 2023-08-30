@@ -25,7 +25,7 @@ Caso 2:
     Resultados esperados: No debería dejar realizar la compra y  se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión.
     Condiciones posteriores: N/A
  */
-public class Case2 {
+public class US02Case02 {
     public static void run(){
         Case caseToTest = new Case(
                 2,
@@ -47,10 +47,7 @@ public class Case2 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-
-            WebElement buyButton = Main.getDriver().findElement(By.xpath("//*[@id=':Rll8b2c5:']"));
-            buyButton.click();
-
+            WebElement buyButton = Main.getDriver().findElement(By.xpath("//*[@id=\":Rr9ahil7k:\"]"));
         } catch (NoSuchElementException e) {
             caseToTest.setStatus(Status.BLOCKED);
             return;

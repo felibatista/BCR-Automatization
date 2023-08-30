@@ -22,7 +22,7 @@ Caso 1:
     Condiciones posteriores: N/A
 
  */
-public class Case1 {
+public class US02Case01 {
     public static void run(){
         Case caseToTest = new Case(
                 1,
