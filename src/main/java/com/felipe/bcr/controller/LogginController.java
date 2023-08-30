@@ -80,7 +80,7 @@ public class LogginController {
 
         Element.PASSWORD_INPUT.getElement().sendKeys(password);
 
-        Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(100));
+        Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
         WebElement logginButton = Main.getDriver().findElement(By.cssSelector("#action-complete"));
         logginButton.click();

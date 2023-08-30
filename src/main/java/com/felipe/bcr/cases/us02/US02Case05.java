@@ -19,8 +19,8 @@ Caso 5:
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
     Resultados esperados:
-    Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
-    Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
+    1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
+    2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
     Condiciones posteriores: N/A
     Resultado: Error (#01)
     #01: Solo se muestra la opción para ingresar “Email o Nickname”, pero no deja ingresar la contraseña en el mismo lugar.
@@ -46,11 +46,25 @@ public class US02Case05 {
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
+        /*
+        1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
+        2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
+         */
+
+        // 1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
         try{
             Element.USERNAME_INPUT.getElement();
+        } catch (Exception e) {
+            System.out.println("Error (#01): No se encontró ningún formulario para iniciar sesión");
+            caseToTest.setStatus(Status.FAILED);
+            return;
+        }
+
+        // 2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
+        try{
             Element.PASSWORD_INPUT.getElement();
         } catch (Exception e) {
-            System.out.println("Error (#01): No se encontró el botón de Username o Password");
+            System.out.println("Error (#02): No se encontró el botón de Contraseña");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

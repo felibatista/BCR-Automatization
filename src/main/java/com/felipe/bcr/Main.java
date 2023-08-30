@@ -21,11 +21,11 @@ public class Main {
         String title = driver.getTitle();
         System.out.println("Chrome: " + title);
 
-        System.out.println("Running case 10...");
-        US02Case10.run();
-        Case case1 = Case.getCaseByID(10);
+        System.out.println("Running case 11...");
+        US02Case11.run();
+        Case case1 = Case.getCaseByID(11);
         case1.end();
-        System.out.println("Case 10 finished. Status: " + case1.getStatus() + " - Time elapsed: " + case1.getFormatTimeElapsed());
+        System.out.println("Case 11 finished. Status: " + case1.getStatus() + " - Time elapsed: " + case1.getFormatTimeElapsed());
     }
 
     public static WebDriver getDriver() {
