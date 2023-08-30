@@ -53,7 +53,7 @@ public class US04Case01 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            if (!FavoriteController.hasFavoriteButton()) {
+            if (!Main.getFavoriteController().hasFavoriteButton()) {
                 caseToTest.setStatus(Status.FAILED);
 
                 return;

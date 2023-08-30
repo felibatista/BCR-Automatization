@@ -1,11 +1,16 @@
 package com.felipe.bcr.controller;
 
+import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.entitys.Status;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+
+import java.util.Scanner;
 
 public class FavoriteController {
-    public static boolean hasFavoriteButton(){
+    public boolean hasFavoriteButton(){
         System.out.println("Verificando si existe el botón de favoritos...");
 
         try {
@@ -32,7 +37,7 @@ public class FavoriteController {
         return true;
     }
 
-    public static void tryClickFavoriteButton(){
+    public void tryClickFavoriteButton(){
         try {
             Element.FAV_BUTTON_ONE.getElement().click();
         } catch (NoSuchElementException e) {
@@ -50,5 +55,19 @@ public class FavoriteController {
                 }
             }
         }
+    }
+
+    public int getFavoritesUserCount(){
+        Main.getDriver().get("https://myaccount.mercadolibre.com.ar/bookmarks/list");
+
+        WebElement favoriteListSpan = Main.getDriver().findElement(By.xpath("/html/body/main/div/div/div[2]/div/div/div/section/div/div[1]/p"));
+
+        String favoriteListSpanText = favoriteListSpan.getText();
+        String[] numbers = favoriteListSpanText.split("[^\\d]+");
+        int favoritesCount = Integer.parseInt(numbers[1]);
+
+        System.out.println("El número de favoritos es: " + favoritesCount);
+
+        return favoritesCount;
     }
 }

@@ -50,12 +50,12 @@ public class US04Case05 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            if (!FavoriteController.hasFavoriteButton()) {
+            if (!Main.getFavoriteController().hasFavoriteButton()) {
                 caseToTest.setStatus(Status.BLOCKED);
 
                 return;
             }else{
-                FavoriteController.tryClickFavoriteButton();
+                Main.getFavoriteController().tryClickFavoriteButton();
 
                 Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 

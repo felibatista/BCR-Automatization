@@ -41,6 +41,10 @@ public enum Element {
             "Se encuentra en todos los productos",
             "/html/body/main/div[2]/div[4]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button"),
 
+    FAV_NAVBAR_BUTTON("Botón para desplegar la lista de favoritos",
+            "Se encuentra en la parte superior de la pantalla, donde está el navbar",
+            "/html/body/header/div/div[6]/nav/a[2]"),
+
     PRODUCT_CARD_OFFER("Card de un producto en oferta",
             "Se encuentra en la sección de ofertas",
             "/html/body/main/div[2]/div[2]/div/ol/li[1]/div/a");
