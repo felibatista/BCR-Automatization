@@ -39,7 +39,7 @@ public class US02Case04 {
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
-        //prevent to run if user is not logged
+        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;

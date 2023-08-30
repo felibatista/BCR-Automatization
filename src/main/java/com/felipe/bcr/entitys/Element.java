@@ -37,9 +37,13 @@ public enum Element {
             "Se encuentra en todos los productos",
             "/html/body/main/div[2]/div[5]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button"),
 
+    FAV_BUTTON_FOUR("Corazón que permite agregar a favoritos un producto [VERSIÓN 3]",
+            "Se encuentra en todos los productos",
+            "/html/body/main/div[2]/div[4]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button"),
+
     PRODUCT_CARD_OFFER("Card de un producto en oferta",
             "Se encuentra en la sección de ofertas",
-            "/html/body/main/div[2]/div[5]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button");
+            "/html/body/main/div[2]/div[2]/div/ol/li[1]/div/a");
 
     private final String name;
     private final String description;

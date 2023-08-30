@@ -45,7 +45,6 @@ public class US02Case03 {
             Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
 
-
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 

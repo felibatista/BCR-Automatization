@@ -12,7 +12,7 @@ import java.time.Duration;
 
 /*
 
-Caso 1:
+Caso 2:
     ID: 002
     Descripción: Validar que un producto de la sección “Supermercado” tenga la opción de ser agregado a favoritos.
     Pre-condiciones:
