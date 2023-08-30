@@ -2,6 +2,7 @@ package com.felipe.bcr;
 
 import com.felipe.bcr.cases.us02.US02Case02;
 import com.felipe.bcr.cases.us02.US02Case03;
+import com.felipe.bcr.cases.us02.US02Case04;
 import com.felipe.bcr.controller.LogginController;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,10 +23,10 @@ public class Main {
         System.out.println("Chrome: " + title);
 
 
-        System.out.println("Running case 3...");
-        US02Case03.run();
-        Case case1 = Case.getCaseByID(3);
-        System.out.println("Case 3 finished. Status: " + case1.getStatus());
+        System.out.println("Running case 4...");
+        US02Case04.run();
+        Case case1 = Case.getCaseByID(4);
+        System.out.println("Case 4 finished. Status: " + case1.getStatus());
     }
 
     public static WebDriver getDriver() {
