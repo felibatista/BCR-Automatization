@@ -1,4 +1,6 @@
-package com.felipe.bcr;
+package com.felipe.bcr.entitys;
+
+import com.felipe.bcr.Util;
 
 import java.time.Duration;
 import java.time.Instant;

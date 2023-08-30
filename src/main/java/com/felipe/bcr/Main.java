@@ -2,10 +2,9 @@ package com.felipe.bcr;
 
 import com.felipe.bcr.cases.us02.*;
 import com.felipe.bcr.controller.LogginController;
+import com.felipe.bcr.entitys.Case;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Instant;
 
 public class Main {
     private static WebDriver driver;

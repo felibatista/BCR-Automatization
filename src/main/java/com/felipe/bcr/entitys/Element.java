@@ -1,5 +1,6 @@
-package com.felipe.bcr;
+package com.felipe.bcr.entitys;
 
+import com.felipe.bcr.Main;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

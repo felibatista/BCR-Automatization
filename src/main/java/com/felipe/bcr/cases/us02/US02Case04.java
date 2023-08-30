@@ -1,14 +1,10 @@
 package com.felipe.bcr.cases.us02;
 
-import com.felipe.bcr.Case;
-import com.felipe.bcr.Element;
+import com.felipe.bcr.entitys.Case;
+import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.Main;
-import com.felipe.bcr.Status;
-import com.felipe.bcr.controller.LogginController;
-import com.felipe.bcr.controller.ProtectionController;
-import org.openqa.selenium.By;
+import com.felipe.bcr.entitys.Status;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
