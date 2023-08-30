@@ -40,8 +40,11 @@ public class US02Case02 {
         }
 
         try {
-            WebElement randomCard = Main.getDriver().findElement(By.xpath("//*[@id=\"root-app\"]/div/div/section[2]/section/div/section/div[2]/div/div/div[1]/div/div[2]/div[1]/p/a"));
-            //*[@id="root-app"]/div/div/section[2]/section/div/section/div[2]/div/div/div[1]/div/div[2]/div[1]/p/a
+            Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+
+            WebElement randomCard = Main.getDriver().findElement(By.xpath("/html/body/main/div[2]/div[2]/div/ol/li[1]/div/a"));
             String href = randomCard.getAttribute("href");
             Main.getDriver().get(href);
 
