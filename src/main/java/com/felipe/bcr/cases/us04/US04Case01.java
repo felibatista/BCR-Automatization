@@ -34,26 +34,30 @@ public class US04Case01 {
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/c/ropa-y-accesorios#menu=categories");
 
-        //prevent to run if user is logged
-        if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
-            caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
-            return;
-        }
-
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Element.BUY_BUTTON.getElement().click();
+            Main.getDriver().get(Element.SHOES_CARD_MODA.getElement().getAttribute("href"));
+
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(2500));
+
+            Main.getDriver().get(Element.PRODUCT_CARD_SHOES.getElement().getAttribute("href"));
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Element.USERNAME_INPUT.getElement();
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-            caseToTest.setStatus(Status.BLOCKED);
-            return;
+            //find first type of fav button and check if it is displayed
+            try {
+                Element.FAV_BUTTON_ONE.getElement();
+            } catch (NoSuchElementException e) {
+                //if it is not displayed, check if the second type of fav button is displayed
+                try {
+                    Element.FAV_BUTTON_TWO.getElement();
+                } catch (NoSuchElementException e2) {
+                    caseToTest.setStatus(Status.FAILED);
+                    return;
+                }
+            }
         } catch (Exception e) {
-            e.printStackTrace();
             caseToTest.setStatus(Status.FAILED);
             return;
         }
