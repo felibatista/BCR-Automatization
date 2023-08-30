@@ -16,8 +16,8 @@ Caso 2:
     ID: 002
     Descripción: Validar si al intentar comprar un producto requiere autenticación.
     Pre-condiciones:
-    Abrir: https://www.mercadolibre.com.ar/
-    No estar logueado.
+    1. Abrir: https://www.mercadolibre.com.ar/
+    2. No estar logueado.
     Entradas: N/A
     Pasos:
     1. Hacer click en un Card de algún “producto en venta” (ref. imagen-card) para ser redirigido a la página de detalles de producto.
@@ -48,10 +48,16 @@ public class US02Case02 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
             WebElement buyButton = Main.getDriver().findElement(By.xpath("//*[@id=\":Rr9ahil7k:\"]"));
+            buyButton.click();
+
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+            WebElement createAccountButton = Main.getDriver().findElement(By.cssSelector("#registration-link"));
         } catch (NoSuchElementException e) {
+            e.printStackTrace();
             caseToTest.setStatus(Status.BLOCKED);
             return;
         } catch (Exception e) {
+            e.printStackTrace();
             caseToTest.setStatus(Status.FAILED);
             return;
         }

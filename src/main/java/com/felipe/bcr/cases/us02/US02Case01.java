@@ -13,8 +13,8 @@ Caso 1:
     ID: 001
     Descripción: Validar que se pueda iniciar sesión en la página principal.
     Pre-condiciones:
-    Abrir: https://www.mercadolibre.com.ar/
-    No estar logueado.
+    1. Abrir: https://www.mercadolibre.com.ar/
+    2. No estar logueado.
     Entradas: N/A
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
@@ -36,14 +36,14 @@ public class US02Case01 {
             return;
         }
 
-
-
         try {
             WebElement joinButton = Main.getDriver().findElement(By.xpath("//a[contains(@data-link-id, 'login')]"));
         } catch (NoSuchElementException e) {
+            e.printStackTrace();
             caseToTest.setStatus(Status.BLOCKED);
             return;
         } catch (Exception e) {
+            e.printStackTrace();
             caseToTest.setStatus(Status.FAILED);
             return;
         }
