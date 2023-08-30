@@ -1,6 +1,7 @@
 package com.felipe.bcr.controller;
 
 import com.felipe.bcr.Main;
+import com.felipe.bcr.entitys.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -49,18 +50,16 @@ public class LogginController {
 
     public void runAutoLogIn(String username, String password) {
         System.out.println("Comenzando proceso de loggeo automático...");
-        WebElement joinButton = Main.getDriver().findElement(By.xpath("//a[contains(@data-link-id, 'login')]"));
-        joinButton.click();
+
+        Element.JOIN_BUTTON.getElement().click();
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-        WebElement usernameInput = Main.getDriver().findElement(By.xpath("//input[@id='user_id']"));
-        usernameInput.sendKeys(username);
+        Element.USERNAME_INPUT.getElement().sendKeys(username);
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-        WebElement continueButton = Main.getDriver().findElement(By.xpath("/html/body/main/div/div[1]/div[2]/div/form/div[2]/button"));
-        continueButton.click();
+        Element.CONTINUE_BUTTON.getElement().click();
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
@@ -79,16 +78,14 @@ public class LogginController {
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-        WebElement passwordInput = Main.getDriver().findElement(By.xpath("/html/body/main/div/div[2]/div[2]/div/form/div[1]/div[1]/div/div[1]/input"));
-        passwordInput.sendKeys(password);
+        Element.PASSWORD_INPUT.getElement().sendKeys(password);
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(100));
 
         WebElement logginButton = Main.getDriver().findElement(By.cssSelector("#action-complete"));
         logginButton.click();
 
-        WebElement passwordInputAgain = Main.getDriver().findElement(By.xpath("/html/body/main/div/div[2]/div[2]/div/form/div[1]/div[1]/div/div[1]/input"));
-        passwordInputAgain.sendKeys(password);
+        Element.PASSWORD_INPUT.getElement().sendKeys(password);
 
         //wait for captcha to be filled AGAIN
         while (CaptchaController.hasCaptcha()){
