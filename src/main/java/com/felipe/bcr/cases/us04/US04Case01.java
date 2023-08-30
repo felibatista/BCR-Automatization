@@ -1,6 +1,7 @@
 package com.felipe.bcr.cases.us04;
 
 import com.felipe.bcr.Main;
+import com.felipe.bcr.controller.FavoriteController;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.entitys.Status;
@@ -37,25 +38,25 @@ public class US04Case01 {
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Main.getDriver().get(Element.SHOES_CARD_MODA.getElement().getAttribute("href"));
+            /*
+            Mercado Libre muestra los productos de la sección "Zapatillas" en un carrusel, el cual el modo de acceso cambio constantemente,
+            esto se podría automatizar y hacer, pero por cuestiones de tiempo, se opto por acceder a un producto de la sección "Moda"
+            de forma directa con un enlace.
 
-            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(2500));
+            ¡ATENCIÓN! El producto puede ser eliminado de la plataforma, por lo que el caso de prueba puede fallar. Para actualizar el link
+            del producto, se debe acceder a la sección "Moda" y copiar el enlace del primer producto que se muestra.
+             */
 
-            Main.getDriver().get(Element.PRODUCT_CARD_SHOES.getElement().getAttribute("href"));
+            String URL_PRIMER_PRODUCTO = "https://articulo.mercadolibre.com.ar/MLA-904849675-sweater-budapest-escote-en-v-sin-mangas-gris-topo-equus-_JM#position=1&search_layout=grid&type=item&tracking_id=6ab63741-670d-4eaf-928d-673b9a0d53e7&DEAL_ID=MLA28970&S=landingHubropa-y-accesorios&V=27&T=CarouselDynamic-home&L=OFERTAS-IMPERDIBLES-%F0%9F%94%A5&deal_print_id=17b37ab0-4778-11ee-8c32-c7a837b78082&c_id=carouseldynamic-home&c_element_order=undefined&c_campaign=OFERTAS-IMPERDIBLES-%F0%9F%94%A5&c_uid=17b37ab0-4778-11ee-8c32-c7a837b78082";
+
+            Main.getDriver().get(URL_PRIMER_PRODUCTO);
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            //find first type of fav button and check if it is displayed
-            try {
-                Element.FAV_BUTTON_ONE.getElement();
-            } catch (NoSuchElementException e) {
-                //if it is not displayed, check if the second type of fav button is displayed
-                try {
-                    Element.FAV_BUTTON_TWO.getElement();
-                } catch (NoSuchElementException e2) {
-                    caseToTest.setStatus(Status.FAILED);
-                    return;
-                }
+            if (!FavoriteController.hasFavoriteButton()) {
+                caseToTest.setStatus(Status.FAILED);
+
+                return;
             }
         } catch (Exception e) {
             caseToTest.setStatus(Status.FAILED);

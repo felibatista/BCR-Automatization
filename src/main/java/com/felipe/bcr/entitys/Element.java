@@ -25,14 +25,6 @@ public enum Element {
             "Se encuentra en la página de detalles de un producto",
             "/html/body/main/div[2]/div[4]/div[1]/div[2]/div/div[1]/form/div[5]/div/button[1]"),
 
-    PRODUCT_CARD_OFFER("Card de un producto en oferta",
-            "Se encuentra en la sección de ofertas",
-            "/html/body/main/div[2]/div[5]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button"),
-
-    SHOES_CARD_MODA("Card de zapatillas de la sección Moda",
-            "Se encuentra en la sección de Moda",
-            "/html/body/main/div/div[4]/div/section/div[2]/div/div[1]/a"),
-
     FAV_BUTTON_ONE("Corazón que permite agregar a favoritos un producto [VERSIÓN 1]",
             "Se encuentra en todos los productos",
             "/html/body/main/div/div[4]/div/section/div[2]/div/div[1]/a"),
@@ -41,9 +33,13 @@ public enum Element {
             "Se encuentra en todos los productos",
             "/html/body/main/div[2]/div[5]/div/div[1]/div/div[1]/div/div[1]/div/div[2]/form/button"),
 
-    PRODUCT_CARD_SHOES("Card de un producto en zapatillas",
-            "Se encuentra en la sección Zapatillas dentro de Moda",
-            "/html/body/main/div/div[2]/section/ol[1]/li[2]/div/div/div[2]/div/div[2]/a");
+    FAV_BUTTON_THREE("Corazón que permite agregar a favoritos un producto [VERSIÓN 3]",
+            "Se encuentra en todos los productos",
+            "/html/body/main/div[2]/div[5]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button"),
+
+    PRODUCT_CARD_OFFER("Card de un producto en oferta",
+            "Se encuentra en la sección de ofertas",
+            "/html/body/main/div[2]/div[5]/div[1]/div[1]/div/div[1]/div[2]/div[1]/form/button");
 
     private final String name;
     private final String description;
