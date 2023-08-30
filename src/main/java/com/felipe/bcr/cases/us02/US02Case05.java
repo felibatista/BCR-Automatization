@@ -4,6 +4,7 @@ import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Status;
+import com.felipe.bcr.entitys.UserStory;
 
 import java.time.Duration;
 
@@ -29,6 +30,7 @@ Caso 5:
 public class US02Case05 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 5,
                 "Validar que se abra una nueva pantalla solicitando los dos (2) campos obligatorios para iniciar sesión",
                 Status.NOT_EXECUTED

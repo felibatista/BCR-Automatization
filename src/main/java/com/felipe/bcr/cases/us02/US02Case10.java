@@ -6,6 +6,7 @@ import com.felipe.bcr.controller.LogginController;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.entitys.Status;
+import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -42,6 +43,7 @@ Caso 10 (Positivo):
 public class US02Case10 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 10,
                 "Validar que se pueda iniciar sesión con una combinación de nickname y contraseña correctos",
                 Status.NOT_EXECUTED

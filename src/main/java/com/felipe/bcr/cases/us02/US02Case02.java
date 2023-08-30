@@ -4,6 +4,7 @@ import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Status;
+import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -28,6 +29,7 @@ Caso 2:
 public class US02Case02 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 2,
                 "Validar si al intentar comprar un producto requiere autenticación",
                 Status.NOT_EXECUTED

@@ -5,6 +5,7 @@ import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Status;
 import com.felipe.bcr.controller.CaptchaController;
+import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.time.Duration;
@@ -31,6 +32,7 @@ Caso 6 (Positivo):
 public class US02Case06 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 6,
                 "Validar que se pueda iniciar sesión con correo electrónico existente en la base de datos",
                 Status.NOT_EXECUTED

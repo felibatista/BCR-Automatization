@@ -4,6 +4,7 @@ import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Status;
+import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.time.Duration;
@@ -26,6 +27,7 @@ Caso 1:
 public class US02Case01 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 1,
                 "Validar que se pueda iniciar sesión en la página principal",
                 Status.NOT_EXECUTED

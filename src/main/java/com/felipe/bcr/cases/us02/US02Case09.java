@@ -5,6 +5,7 @@ import com.felipe.bcr.controller.CaptchaController;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.entitys.Status;
+import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -33,6 +34,7 @@ Caso 9 (Negativo):
 public class US02Case09 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 9,
                 "Validar que no se puede iniciar sesión con nickname inexistente en la base de datos",
                 Status.NOT_EXECUTED

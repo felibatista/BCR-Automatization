@@ -5,10 +5,13 @@ import com.felipe.bcr.Util;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Case {
-    private static HashMap<Integer, Case> cases = new HashMap<Integer, Case>();
+    private static HashMap<UserStory, HashMap<Integer, Case>> cases;
+
+    private UserStory userStory;
     private int id;
     private String description;
     private ArrayList<String> preCondition;
@@ -25,7 +28,8 @@ public class Case {
         this.finish = Instant.now();
     }
 
-    public Case(int id, String description, Status status) {
+    public Case(UserStory userStory, int id, String description, Status status) {
+        this.userStory = userStory;
         this.id = id;
         this.description = description;
         this.status = status;
@@ -33,10 +37,11 @@ public class Case {
         this.start = Instant.now();
         this.finish = Instant.now();
 
-        cases.put(id, this);
+        cases.get(userStory).put(id, this);
     }
 
-    public Case(int id, String description, ArrayList<String> preCondition, ArrayList<String> postCondition, ArrayList<String> steps, ArrayList<String> expectedResults, Status status) {
+    public Case(UserStory userStory, int id, String description, ArrayList<String> preCondition, ArrayList<String> postCondition, ArrayList<String> steps, ArrayList<String> expectedResults, Status status) {
+        this.userStory = userStory;
         this.id = id;
         this.description = description;
         this.preCondition = preCondition;
@@ -48,11 +53,31 @@ public class Case {
         this.start = Instant.now();
         this.finish = Instant.now();
 
-        cases.put(id, this);
+        cases.get(userStory).put(id, this);
     }
 
-    public static Case getCaseByID(int id){
-        return cases.get(id);
+    public static void generateHashMaps(){
+        cases = new HashMap<UserStory, HashMap<Integer, Case>>();
+
+        for (UserStory userStory : UserStory.values()) {
+            cases.put(userStory, new HashMap<Integer, Case>());
+        }
+    }
+
+    public static Collection<Case> getCasesByUserStory(UserStory userStory){
+        return cases.get(userStory).values();
+    }
+
+    public static Case getCaseByUserStoryAndID(UserStory userStory, int id){
+        return cases.get(userStory).get(id);
+    }
+
+    public UserStory getUserHistory() {
+        return userStory;
+    }
+
+    public void setUserHistory(UserStory userStory) {
+        this.userStory = userStory;
     }
 
     public int getId() {
@@ -134,13 +159,5 @@ public class Case {
                 ", expectedResults=" + expectedResults +
                 ", status=" + status +
                 '}';
-    }
-
-    public static HashMap<Integer, Case> getCases() {
-        return cases;
-    }
-
-    public void setCases(HashMap<Integer, Case> cases) {
-        Case.cases = cases;
     }
 }

@@ -5,6 +5,7 @@ import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Status;
 import com.felipe.bcr.controller.ProtectionController;
+import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
@@ -31,6 +32,7 @@ Caso 3:
 public class US02Case03 {
     public static void run(){
         Case caseToTest = new Case(
+                UserStory.US02,
                 3,
                 "Validar si al intentar comprar un producto ya no es necesario volver a hacer la autenticación",
                 Status.NOT_EXECUTED
