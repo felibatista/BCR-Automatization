@@ -1,40 +1,37 @@
 package com.felipe.bcr.cases.us02;
 
+import com.felipe.bcr.Main;
+import com.felipe.bcr.controller.CaptchaController;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
-import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Status;
-import com.felipe.bcr.controller.CaptchaController;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 
 import java.time.Duration;
 
 /*
 
-Caso 7 (Negativo):
-    ID: 007
-    Descripción: Validar que no se puede iniciar sesión con correo electrónico inexistente en la base de datos.
+ID: 008
+    Descripción: Validar que se pueda iniciar sesión con nickname existente en la base de datos.
     Pre-condiciones:
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas:
-    Email inválido: “estonofuncionara@gmail.com”
+    Nickname válido: “FelipeBCR”
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
-    2. En el formulario abierto escribir el “Email” en la sección de “Email, teléfono o usuario”
+    2. En el formulario abierto escribir el “Nickname” en la sección de “Email, teléfono o usuario”
     3. Realizar el Captcha en caso de ser solicitado.
     4. Hacer click en el botón de “Continuar” para seguir el proceso.
-
-    Resultados esperados: Debería aparecer un mensaje con un error indicando que el email no existe en la base de datos.
+    Resultados esperados: Se debería abrir un nuevo formulario para introducir la contraseña.
     Condiciones posteriores: N/A
 
  */
-public class US02Case07 {
+public class US02Case08 {
     public static void run(){
         Case caseToTest = new Case(
-                7,
-                "Validar que no se puede iniciar sesión con correo electrónico inexistente en la base de datos",
+                8,
+                "Validar que se pueda iniciar sesión con correo electrónico existente en la base de datos",
                 Status.NOT_EXECUTED
         );
 
@@ -49,7 +46,7 @@ public class US02Case07 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Element.USERNAME_INPUT.getElement().sendKeys("estonofuncionara@gmail.com");
+            Element.USERNAME_INPUT.getElement().sendKeys("HELLOJAVAA");
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
@@ -62,20 +59,21 @@ public class US02Case07 {
                 System.out.println("Esperando acción de rellenado de captcha manual...");
 
                 try {
-                    if (Main.getDriver().findElement(By.xpath("/html/body/main/div/div[1]/div[2]/div/form/div[1]/div[1]/div/div/span[2]/div/div")).isDisplayed()) {
-                        System.out.println("Se encontró la validación del email incorrecto");
-                        break;
-                    }
-                } catch (NoSuchElementException e) {
-                    //do nothing
-                }
-
-                try {
                     Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             }
+
+            System.out.println("Captcha rellenado correctamente");
+
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+
+            //check if password input is present, if not, the email is not registered
+            Element.PASSWORD_INPUT.getElement();
+        } catch (NoSuchElementException e) {
+            caseToTest.setStatus(Status.BLOCKED);
+            return;
         } catch (Exception e) {
             e.printStackTrace();
             caseToTest.setStatus(Status.FAILED);
