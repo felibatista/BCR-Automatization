@@ -30,11 +30,11 @@ public class Main {
         String title = driver.getTitle();
         System.out.println("Chrome: " + title);
 
-        System.out.println("Running case 7...");
-        US04Case07.run();
-        Case case1 = Case.getCaseByUserStoryAndID(UserStory.US04, 7);
+        System.out.println("Running case 8...");
+        US04Case08.run();
+        Case case1 = Case.getCaseByUserStoryAndID(UserStory.US04, 8);
         case1.end();
-        System.out.println("Case 7 finished. Status: " + case1.getStatus() + " - Time elapsed: " + case1.getFormatTimeElapsed());
+        System.out.println("Case 8 finished. Status: " + case1.getStatus() + " - Time elapsed: " + case1.getFormatTimeElapsed());
 
         //driver.close();
     }

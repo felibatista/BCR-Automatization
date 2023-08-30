@@ -13,7 +13,7 @@ import java.time.Duration;
 
 /*
 
-Caso 1:
+Caso 7:
     ID: 007
     Descripción: Validar la opción de ver todos los productos que fueron marcados como favoritos.
     Pre-condiciones:
