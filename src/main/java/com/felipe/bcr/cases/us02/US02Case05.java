@@ -1,6 +1,7 @@
 package com.felipe.bcr.cases.us02;
 
 import com.felipe.bcr.Case;
+import com.felipe.bcr.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.Status;
 import org.openqa.selenium.By;
@@ -36,20 +37,21 @@ public class US02Case05 {
                 Status.NOT_EXECUTED
         );
 
+        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+
         //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
 
-        WebElement joinButton = Main.getDriver().findElement(By.xpath("//a[contains(@data-link-id, 'login')]"));
-        joinButton.click();
+        Element.JOIN_BUTTON.getElement().click();
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
         try{
-            WebElement usernameInput = Main.getDriver().findElement(By.xpath("//input[@id='user_id']"));
-            WebElement passwordInput = Main.getDriver().findElement(By.xpath("/html/body/main/div/div[2]/div[2]/div/form/div[1]/div[1]/div/div[1]/input"));
+            Element.USERNAME_INPUT.getElement();
+            Element.PASSWORD_INPUT.getElement();
         } catch (Exception e) {
             System.out.println("Error (#01): No se encontró el botón de Username o Password");
             caseToTest.setStatus(Status.FAILED);

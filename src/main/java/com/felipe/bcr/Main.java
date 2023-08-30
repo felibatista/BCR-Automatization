@@ -1,12 +1,11 @@
 package com.felipe.bcr;
 
-import com.felipe.bcr.cases.us02.US02Case02;
-import com.felipe.bcr.cases.us02.US02Case03;
-import com.felipe.bcr.cases.us02.US02Case04;
-import com.felipe.bcr.cases.us02.US02Case05;
+import com.felipe.bcr.cases.us02.*;
 import com.felipe.bcr.controller.LogginController;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Instant;
 
 public class Main {
     private static WebDriver driver;
@@ -23,11 +22,11 @@ public class Main {
         String title = driver.getTitle();
         System.out.println("Chrome: " + title);
 
-
-        System.out.println("Running case 5...");
-        US02Case05.run();
-        Case case1 = Case.getCaseByID(5);
-        System.out.println("Case 5 finished. Status: " + case1.getStatus());
+        System.out.println("Running case 6...");
+        US02Case06.run();
+        Case case1 = Case.getCaseByID(6);
+        case1.end();
+        System.out.println("Case 6 finished. Status: " + case1.getStatus() + " - Time elapsed: " + case1.getFormatTimeElapsed());
     }
 
     public static WebDriver getDriver() {

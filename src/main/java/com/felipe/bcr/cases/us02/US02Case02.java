@@ -1,6 +1,7 @@
 package com.felipe.bcr.cases.us02;
 
 import com.felipe.bcr.Case;
+import com.felipe.bcr.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.Status;
 import org.openqa.selenium.By;
@@ -33,28 +34,28 @@ public class US02Case02 {
                 Status.NOT_EXECUTED
         );
 
+        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+
         //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
 
-        try {
-            Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
+        try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            WebElement randomCard = Main.getDriver().findElement(By.xpath("/html/body/main/div[2]/div[2]/div/ol/li[1]/div/a"));
-            String href = randomCard.getAttribute("href");
-            Main.getDriver().get(href);
+            Main.getDriver().get(Element.PRODUCT_CARD_OFFER.getElement().getAttribute("href"));
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-            WebElement buyButton = Main.getDriver().findElement(By.xpath("//*[@id=\":Rr9ahil7k:\"]"));
-            buyButton.click();
+            Element.BUY_BUTTON.getElement().click();
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-            WebElement createAccountButton = Main.getDriver().findElement(By.cssSelector("#registration-link"));
+
+            //test if register button is present
+            Main.getDriver().findElement(By.cssSelector("#registration-link"));
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             caseToTest.setStatus(Status.BLOCKED);

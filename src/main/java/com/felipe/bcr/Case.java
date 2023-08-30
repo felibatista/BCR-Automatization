@@ -1,5 +1,7 @@
 package com.felipe.bcr;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,16 +15,25 @@ public class Case {
     private ArrayList<String> expectedResults;
     private Status status;
 
-    public Case(){
+    Instant start;
+    Instant finish;
 
+    public Case(){
+        this.start = Instant.now();
+        this.finish = Instant.now();
     }
+
     public Case(int id, String description, Status status) {
         this.id = id;
         this.description = description;
         this.status = status;
 
+        this.start = Instant.now();
+        this.finish = Instant.now();
+
         cases.put(id, this);
     }
+
     public Case(int id, String description, ArrayList<String> preCondition, ArrayList<String> postCondition, ArrayList<String> steps, ArrayList<String> expectedResults, Status status) {
         this.id = id;
         this.description = description;
@@ -31,6 +42,9 @@ public class Case {
         this.steps = steps;
         this.expectedResults = expectedResults;
         this.status = status;
+
+        this.start = Instant.now();
+        this.finish = Instant.now();
 
         cases.put(id, this);
     }
@@ -93,6 +107,18 @@ public class Case {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void end() {
+        this.finish = Instant.now();
+    }
+
+    public long getTimeElapsed() {
+        return Duration.between(start, finish).toMillis();
+    }
+
+    public String getFormatTimeElapsed() {
+        return Util.formatInterval(this.getTimeElapsed());
     }
 
     @Override

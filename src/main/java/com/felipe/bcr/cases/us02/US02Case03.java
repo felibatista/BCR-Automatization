@@ -1,6 +1,7 @@
 package com.felipe.bcr.cases.us02;
 
 import com.felipe.bcr.Case;
+import com.felipe.bcr.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.Status;
 import com.felipe.bcr.controller.LogginController;
@@ -37,24 +38,22 @@ public class US02Case03 {
                 Status.NOT_EXECUTED
         );
 
+        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+
         //prevent to run if user is not logged
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
             Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
 
+
         try {
-            Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+
+            Main.getDriver().get(Element.PRODUCT_CARD_OFFER.getElement().getAttribute("href"));
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            WebElement randomCard = Main.getDriver().findElement(By.xpath("/html/body/main/div[2]/div[2]/div/ol/li[1]/div/a"));
-            String href = randomCard.getAttribute("href");
-            Main.getDriver().get(href);
-
-            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
-
-            WebElement buyButton = Main.getDriver().findElement(By.xpath("/html/body/main/div[2]/div[4]/div[1]/div[2]/div/div[1]/form/div[5]/div/button[1]"));
-            buyButton.click();
+            Element.BUY_BUTTON.getElement().click();
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
@@ -66,8 +65,10 @@ public class US02Case03 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             try{
-                WebElement createAccountButton = Main.getDriver().findElement(By.cssSelector("#registration-link"));
+                //check if register button is present
+                Main.getDriver().findElement(By.cssSelector("#registration-link"));
             } catch (NoSuchElementException e) {
+                //if not, then we are logged
                 caseToTest.setStatus(Status.PASSED);
                 return;
             } catch (Exception e) {

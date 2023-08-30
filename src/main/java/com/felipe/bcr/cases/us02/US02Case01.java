@@ -1,6 +1,7 @@
 package com.felipe.bcr.cases.us02;
 
 import com.felipe.bcr.Case;
+import com.felipe.bcr.Element;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.Status;
 import org.openqa.selenium.By;
@@ -32,6 +33,8 @@ public class US02Case01 {
                 Status.NOT_EXECUTED
         );
 
+        Main.getDriver().get("https://www.mercadolibre.com.ar/");
+
         //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
@@ -39,12 +42,13 @@ public class US02Case01 {
         }
 
         try {
-            WebElement joinButton = Main.getDriver().findElement(By.xpath("//a[contains(@data-link-id, 'login')]"));
-            joinButton.click();
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+
+            Element.BUY_BUTTON.getElement().click();
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            WebElement usernameInput = Main.getDriver().findElement(By.xpath("//input[@id='user_id']"));
+            Element.USERNAME_INPUT.getElement();
         } catch (NoSuchElementException e) {
             e.printStackTrace();
             caseToTest.setStatus(Status.BLOCKED);
