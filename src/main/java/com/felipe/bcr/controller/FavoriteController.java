@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FavoriteController {
@@ -64,7 +65,7 @@ public class FavoriteController {
 
         String favoriteListSpanText = favoriteListSpan.getText();
         String[] numbers = favoriteListSpanText.split("[^\\d]+");
-        int favoritesCount = Integer.parseInt(numbers[1]);
+        int favoritesCount = Integer.parseInt(numbers[2]);
 
         System.out.println("El número de favoritos es: " + favoritesCount);
 

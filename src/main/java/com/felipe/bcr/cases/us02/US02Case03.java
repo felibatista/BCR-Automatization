@@ -72,7 +72,7 @@ public class US02Case03 {
 
             caseToTest.setStatus(Status.FAILED);
         } catch (Exception e) {
-            caseToTest.addLog("(Error #02-03-2) Hubo un error inesperado");
+            caseToTest.addLog("(Error #02-03-2) Hubo un error inesperado \n[" + e.getMessage() + "]");
 
             caseToTest.setStatus(Status.FAILED);
         }

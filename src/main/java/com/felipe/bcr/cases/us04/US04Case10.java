@@ -67,15 +67,17 @@ public class US04Case10 {
             //<iframe src="https://myaccount.mercadolibre.com.ar/bookmarks/list/widget" width="100%" height="100%" frameborder="0" scrolling="yes" style="height: 100%;"></iframe>
             WebElement iframe = Main.getDriver().findElement(By.xpath("/html/body/div[2]/div[2]/iframe[2]"));
             Main.getDriver().switchTo().frame(iframe);
+
+            //Este es el primer elemento de la lista
             String recentItem = Main.getDriver().findElement(By.xpath("/html/body/main/div/ul/li[1]/div[2]/div[2]/a")).getText();
 
             if (!productName.equalsIgnoreCase(recentItem)) {
-                caseToTest.addLog("(Error #04-10-2) El producto no se agregó a la lista desplegable de favoritos");
+                caseToTest.addLog("(Error #04-10-2) El producto no se agregó a la lista desplegable de favoritos o no está primero en la lista");
                 caseToTest.setStatus(Status.FAILED);
                 return;
             }
         } catch (Exception e) {
-            caseToTest.addLog("(Error #04-10-3) Hubo un error inesperado");
+            caseToTest.addLog("(Error #04-10-3) Hubo un error inesperado \n[" + e.getMessage() + "]");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

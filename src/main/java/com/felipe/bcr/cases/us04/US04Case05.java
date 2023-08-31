@@ -70,7 +70,7 @@ public class US04Case05 {
                 }
             }
         } catch (Exception e) {
-            caseToTest.addLog("(Error #04-05-3) Hubo un error inesperado");
+            caseToTest.addLog("(Error #04-05-3) Hubo un error inesperado \n[" + e.getMessage() + "]");
 
             caseToTest.setStatus(Status.FAILED);
             return;

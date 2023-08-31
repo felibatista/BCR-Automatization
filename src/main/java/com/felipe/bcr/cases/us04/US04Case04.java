@@ -57,7 +57,7 @@ public class US04Case04 {
                 Main.getFavoriteController().tryClickFavoriteButton();
             }
         } catch (Exception e) {
-            caseToTest.addLog("(Error #04-04-2) Hubo un error inesperado");
+            caseToTest.addLog("(Error #04-04-2) Hubo un error inesperado \n[" + e.getMessage() + "]");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

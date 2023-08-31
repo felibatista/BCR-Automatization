@@ -29,19 +29,17 @@ public class US04Case08 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                7,
+                8,
                 "Validar que en la sección de favoritos el usuario pueda entrar directamente a un producto marcado haciendo click en él",
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is not logged
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
             Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
 
-        //prevent to run if user has no favorites
         if (Main.getFavoriteController().getFavoritesUserCount() == 0) {
-            System.out.println("(Error de PRE-CONDICIÓN): Se debe tener al menos un producto en favoritos para correr este caso de prueba (US04Case07)");
+            System.out.println("(Error de PRE-CONDICIÓN): Se debe tener al menos un producto en favoritos para correr este caso de prueba");
             caseToTest.setStatus(Status.BLOCKED);
             return;
         }
@@ -65,7 +63,7 @@ public class US04Case08 {
                 return;
             }
         } catch (Exception e) {
-            caseToTest.addLog("(Error #04-08-2) Hubo un error inesperado");
+            caseToTest.addLog("(Error #04-08-2) Hubo un error inesperado \n[" + e.getMessage() + "]");
             caseToTest.setStatus(Status.FAILED);
             return;
         }
