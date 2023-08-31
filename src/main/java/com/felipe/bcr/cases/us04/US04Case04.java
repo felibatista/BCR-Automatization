@@ -36,7 +36,7 @@ public class US04Case04 {
         );
 
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
-            Main.getLogginController().runAutoLogIn("TEST", "TEST");
+            Main.getLogginController().runAutoLogIn("hellojavaa@gmail.com", "Carbia1143");
         }
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
