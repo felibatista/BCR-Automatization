@@ -38,12 +38,11 @@ public class US02Case03 {
                 Status.NOT_EXECUTED
         );
 
-        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
-
-        //prevent to run if user is not logged
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
             Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
+
+        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
@@ -56,7 +55,6 @@ public class US02Case03 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            //prevent protection page
             if (ProtectionController.hasProtection()){
                 ProtectionController.solveProtection();
             }
@@ -64,23 +62,18 @@ public class US02Case03 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             try{
-                //check if register button is present
                 Main.getDriver().findElement(By.cssSelector("#registration-link"));
+
+                caseToTest.addLog("(Error #02-03-1) Se abrió la página de logueo");
             } catch (NoSuchElementException e) {
-                //if not, then we are logged
                 caseToTest.setStatus(Status.PASSED);
-                return;
-            } catch (Exception e) {
-                caseToTest.setStatus(Status.FAILED);
                 return;
             }
 
             caseToTest.setStatus(Status.FAILED);
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-            caseToTest.setStatus(Status.BLOCKED);
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-03-2) Hubo un error inesperado");
+
             caseToTest.setStatus(Status.FAILED);
         }
     }

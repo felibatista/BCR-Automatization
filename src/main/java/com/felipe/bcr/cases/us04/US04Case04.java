@@ -35,7 +35,6 @@ public class US04Case04 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is not logged
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
             Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
@@ -50,6 +49,7 @@ public class US04Case04 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             if (!Main.getFavoriteController().hasFavoriteButton()) {
+                caseToTest.addLog("(Error #04-04-1) No se encontró el botón de favoritos");
                 caseToTest.setStatus(Status.BLOCKED);
 
                 return;
@@ -57,6 +57,7 @@ public class US04Case04 {
                 Main.getFavoriteController().tryClickFavoriteButton();
             }
         } catch (Exception e) {
+            caseToTest.addLog("(Error #04-04-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

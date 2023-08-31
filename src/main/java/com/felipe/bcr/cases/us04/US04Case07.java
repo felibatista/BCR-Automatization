@@ -40,14 +40,12 @@ public class US04Case07 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is not logged
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
             Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
 
-        //prevent to run if user has no favorites
         if (Main.getFavoriteController().getFavoritesUserCount() == 0) {
-            System.out.println("(Error de PRE-REQUISITO): Debes tener al menos un producto en favoritos para correr este caso de prueba (US04Case07)");
+            System.out.println("(Error de PRE-CONDICIÓN) Se debee tener al menos un producto en favoritos para correr este caso de prueba");
             caseToTest.setStatus(Status.BLOCKED);
             return;
         }
@@ -88,11 +86,12 @@ public class US04Case07 {
             try{
                 Main.getDriver().findElement(By.xpath("/html/body/main/div/div/div[2]/div/div/div/section/div/ul/li/div/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]/div[2]"));
             } catch (Exception e) {
-                System.out.println("(Error #2163): No se encontró la información de cuando termina la publicación");
+                caseToTest.addLog("(Error #04-07-1) No se encontró la información de cuando termina la publicación");
                 caseToTest.setStatus(Status.FAILED);
                 return;
             }
         } catch (Exception e) {
+            caseToTest.addLog("(Error #04-07-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

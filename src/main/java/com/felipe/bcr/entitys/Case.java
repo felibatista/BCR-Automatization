@@ -12,27 +12,31 @@ public class Case {
     private static HashMap<UserStory, HashMap<Integer, Case>> cases;
 
     private UserStory userStory;
+
     private int id;
     private String description;
+    private Status status;
+
     private ArrayList<String> preCondition;
     private ArrayList<String> postCondition;
     private ArrayList<String> steps;
     private ArrayList<String> expectedResults;
-    private Status status;
+    private ArrayList<String> logs;
 
     Instant start;
     Instant finish;
-
-    public Case(){
-        this.start = Instant.now();
-        this.finish = Instant.now();
-    }
 
     public Case(UserStory userStory, int id, String description, Status status) {
         this.userStory = userStory;
         this.id = id;
         this.description = description;
         this.status = status;
+
+        this.preCondition = new ArrayList<String>();
+        this.postCondition = new ArrayList<String>();
+        this.steps = new ArrayList<String>();
+        this.expectedResults = new ArrayList<String>();
+        this.logs = new ArrayList<String>();
 
         this.start = Instant.now();
         this.finish = Instant.now();
@@ -138,6 +142,7 @@ public class Case {
 
     public void end() {
         this.finish = Instant.now();
+        this.addLog("(LOG) Test finalizado en " + this.getFormatTimeElapsed() + " con estado " + this.getStatus() + ".");
     }
 
     public long getTimeElapsed() {
@@ -146,6 +151,28 @@ public class Case {
 
     public String getFormatTimeElapsed() {
         return Util.formatInterval(this.getTimeElapsed());
+    }
+
+    public void addLog(String log) {
+        this.logs.add(log);
+    }
+
+    public ArrayList<String> getLogs() {
+        return this.logs;
+    }
+
+    public String getLogsAsString() {
+        String logs = "";
+
+        for (String log : this.logs) {
+            logs += log + "\n";
+        }
+
+        return logs;
+    }
+
+    public void clearLogs() {
+        this.logs.clear();
     }
 
     @Override

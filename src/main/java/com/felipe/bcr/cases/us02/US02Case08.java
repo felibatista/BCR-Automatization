@@ -18,7 +18,7 @@ ID: 008
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas:
-    Nickname válido: “FelipeBCR”
+    Nickname válido: “HELLOJAVAA”
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
     2. En el formulario abierto escribir el “Nickname” en la sección de “Email, teléfono o usuario”
@@ -37,8 +37,8 @@ public class US02Case08 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -71,13 +71,15 @@ public class US02Case08 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            //check if password input is present, if not, the email is not registered
-            Element.PASSWORD_INPUT.getElement();
-        } catch (NoSuchElementException e) {
-            caseToTest.setStatus(Status.BLOCKED);
-            return;
+            try {
+                Element.PASSWORD_INPUT.getElement();
+            } catch (NoSuchElementException e) {
+                caseToTest.addLog("(Error #02-08-1) No se pudo encontrar el elemento de ingreso de contraseña");
+                caseToTest.setStatus(Status.FAILED);
+                return;
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-08-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

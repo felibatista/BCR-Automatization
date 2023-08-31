@@ -40,8 +40,8 @@ public class US02Case07 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -65,7 +65,6 @@ public class US02Case07 {
 
                 try {
                     if (Main.getDriver().findElement(By.xpath("/html/body/main/div/div[1]/div[2]/div/form/div[1]/div[1]/div/div/span[2]/div/div")).isDisplayed()) {
-                        System.out.println("Se encontró la validación del email incorrecto");
                         break;
                     }
                 } catch (NoSuchElementException e) {
@@ -79,7 +78,7 @@ public class US02Case07 {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-07-1) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

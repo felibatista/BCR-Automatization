@@ -16,7 +16,7 @@ Caso 2:
     ID: 002
     Descripción: Validar que un producto de la sección “Supermercado” tenga la opción de ser agregado a favoritos.
     Pre-condiciones:
-    Abrir: https://www.mercadolibre.com.ar/ofertas/supermercado#menu=categories
+    1. Abrir: https://www.mercadolibre.com.ar/ofertas/supermercado#menu=categories
     Entradas: N/A
     Pasos:
     1. Hacer click en la sección de “Bebidas” (ref. imagen-drinks-section)
@@ -54,11 +54,13 @@ public class US04Case02 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             if (!Main.getFavoriteController().hasFavoriteButton()) {
+                caseToTest.addLog("(Error #04-02-1) No se encontró el botón de favoritos");
                 caseToTest.setStatus(Status.FAILED);
 
                 return;
             }
         } catch (Exception e) {
+            caseToTest.addLog("(Error #04-02-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

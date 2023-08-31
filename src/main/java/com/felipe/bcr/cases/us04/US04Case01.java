@@ -54,11 +54,13 @@ public class US04Case01 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             if (!Main.getFavoriteController().hasFavoriteButton()) {
+                caseToTest.addLog("(Error #04-01-1) No se encontró el botón de favoritos");
                 caseToTest.setStatus(Status.FAILED);
 
                 return;
             }
         } catch (Exception e) {
+            caseToTest.addLog("(Error #04-01-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

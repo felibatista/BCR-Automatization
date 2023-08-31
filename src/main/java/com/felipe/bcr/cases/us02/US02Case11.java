@@ -43,8 +43,8 @@ public class US02Case11 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -86,7 +86,6 @@ public class US02Case11 {
 
             Element.PASSWORD_INPUT.getElement().sendKeys("abscjsaedf");
 
-            //wait for captcha to be filled AGAIN
             while (CaptchaController.hasCaptcha()){
                 System.out.println("Esperando acción de rellenado de captcha manual...");
 
@@ -107,7 +106,7 @@ public class US02Case11 {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-11-1) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

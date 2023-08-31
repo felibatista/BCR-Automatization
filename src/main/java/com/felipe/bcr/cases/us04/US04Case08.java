@@ -41,7 +41,7 @@ public class US04Case08 {
 
         //prevent to run if user has no favorites
         if (Main.getFavoriteController().getFavoritesUserCount() == 0) {
-            System.out.println("(Error de PRE-REQUISITO): Debes tener al menos un producto en favoritos para correr este caso de prueba (US04Case07)");
+            System.out.println("(Error de PRE-CONDICIÓN): Se debe tener al menos un producto en favoritos para correr este caso de prueba (US04Case07)");
             caseToTest.setStatus(Status.BLOCKED);
             return;
         }
@@ -60,12 +60,13 @@ public class US04Case08 {
             try {
                 Main.getDriver().findElement(By.xpath("/html/body/main/div/div/div[2]/div/div/div/section/div/ul/li/div/div[3]/a")).click();
             } catch (Exception e) {
-                System.out.println("(Error #1626): No se pudo acceder al producto desde la sección de favoritos");
+                caseToTest.addLog("(Error #04-08-1) No se pudo realizar el click en el producto de favoritos");
                 caseToTest.setStatus(Status.FAILED);
                 return;
             }
         } catch (Exception e) {
-            caseToTest.setStatus(Status.BLOCKED);
+            caseToTest.addLog("(Error #04-08-2) Hubo un error inesperado");
+            caseToTest.setStatus(Status.FAILED);
             return;
         }
 

@@ -38,35 +38,41 @@ public class US02Case05 {
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
 
-        Element.JOIN_BUTTON.getElement().click();
+        try {
+            Element.JOIN_BUTTON.getElement().click();
 
-        Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-        /*
-        1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
-        2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
-         */
+            /*
+            1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
+            2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
+             */
 
-        // 1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
-        try{
-            Element.USERNAME_INPUT.getElement();
+            // 1. Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión
+            try {
+                Element.USERNAME_INPUT.getElement();
+            } catch (Exception e) {
+                caseToTest.addLog("(Error #02-05-1) No se pudo encontrar el elemento de inicio de sesión");
+                caseToTest.setStatus(Status.FAILED);
+                return;
+            }
+
+            // 2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
+            try {
+                Element.PASSWORD_INPUT.getElement();
+            } catch (Exception e) {
+                caseToTest.addLog("(Error #02-05-2) No se encontro el elemento para ingresar la contraseña");
+                caseToTest.setStatus(Status.FAILED);
+                return;
+            }
         } catch (Exception e) {
-            System.out.println("Error (#01): No se encontró ningún formulario para iniciar sesión");
-            caseToTest.setStatus(Status.FAILED);
-            return;
-        }
-
-        // 2. Dentro debería estar un formulario que permita ingresar un “Email o Nickname” y a su vez también la “Contraseña”
-        try{
-            Element.PASSWORD_INPUT.getElement();
-        } catch (Exception e) {
-            System.out.println("Error (#02): No se encontró el botón de Contraseña");
+            caseToTest.addLog("(Error #02-05-3) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

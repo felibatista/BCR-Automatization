@@ -35,8 +35,8 @@ public class US02Case01 {
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/");
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -48,13 +48,15 @@ public class US02Case01 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Element.USERNAME_INPUT.getElement();
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-            caseToTest.setStatus(Status.BLOCKED);
-            return;
+            try{
+                Element.USERNAME_INPUT.getElement();
+            } catch (NoSuchElementException e) {
+                caseToTest.addLog("(Error #02-01-1) No se pudo encontrar el elemento de ingreso de usuario");
+                caseToTest.setStatus(Status.BLOCKED);
+                return;
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-01-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

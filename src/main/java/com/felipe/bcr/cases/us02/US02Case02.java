@@ -37,8 +37,8 @@ public class US02Case02 {
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -55,14 +55,16 @@ public class US02Case02 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-            //test if register button is present
-            Main.getDriver().findElement(By.cssSelector("#registration-link"));
-        } catch (NoSuchElementException e) {
-            e.printStackTrace();
-            caseToTest.setStatus(Status.BLOCKED);
-            return;
+            try {
+                Main.getDriver().findElement(By.cssSelector("#registration-link"));
+            } catch (NoSuchElementException e) {
+                caseToTest.addLog("(Error #02-02-1) No se pudo encontrar el elemento de registro");
+                caseToTest.setStatus(Status.BLOCKED);
+                return;
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-02-2) Hubo un error inesperado");
+
             caseToTest.setStatus(Status.FAILED);
             return;
         }

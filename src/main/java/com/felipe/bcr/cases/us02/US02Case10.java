@@ -49,8 +49,8 @@ public class US02Case10 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -68,7 +68,8 @@ public class US02Case10 {
 
             //1. Se debería poder ingresar correctamente al aplicativo.
             if (!Main.getDriver().getCurrentUrl().equals("https://www.mercadolibre.com.ar/")) {
-                System.out.println("Error (#02): No se pudo ingresar correctamente al aplicativo.");
+                caseToTest.addLog("(Error #02-10-1) No se pudo ingresar correctamente al aplicativo");
+
                 caseToTest.setStatus(Status.FAILED);
                 return;
             }
@@ -77,7 +78,7 @@ public class US02Case10 {
             try {
                 Main.getDriver().findElement(By.xpath("/html/body/header/div/div[6]/nav/div/label/a/span/span[2]"));
             } catch (NoSuchElementException e) {
-                System.out.println("Error (#03): No se pudo encontrar el apodo en la parte superior de la página.");
+                caseToTest.addLog("(Error #02-10-2) No se pudo encontrar el apodo en la parte superior de la página.");
                 caseToTest.setStatus(Status.FAILED);
                 return;
             }
@@ -86,13 +87,14 @@ public class US02Case10 {
             try {
                 Element.JOIN_BUTTON.getElement();
 
-                System.out.println("Error (#04): Se encontró el botón de iniciar sesión.");
+                caseToTest.addLog("(Error #02-10-3) La opción de iniciar sesión sigue apareciendo");
                 caseToTest.setStatus(Status.FAILED);
             } catch (NoSuchElementException e) {
                 //do nothing
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-08-4) Hubo un error inesperado");
+
             caseToTest.setStatus(Status.FAILED);
             return;
         }

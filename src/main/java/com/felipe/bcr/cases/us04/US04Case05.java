@@ -35,8 +35,8 @@ public class US04Case05 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is logged
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error de PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -51,6 +51,7 @@ public class US04Case05 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             if (!Main.getFavoriteController().hasFavoriteButton()) {
+                caseToTest.addLog("(Error #04-05-1) No se encontró el botón de favoritos");
                 caseToTest.setStatus(Status.BLOCKED);
 
                 return;
@@ -59,10 +60,18 @@ public class US04Case05 {
 
                 Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-                //test if register button is present
-                Main.getDriver().findElement(By.cssSelector("#registration-link"));
+                try {
+                    Main.getDriver().findElement(By.cssSelector("#registration-link"));
+                } catch (Exception e) {
+                    caseToTest.addLog("(Error #04-05-2) No se encontró el formulario para iniciar sesión");
+                    caseToTest.setStatus(Status.FAILED);
+
+                    return;
+                }
             }
         } catch (Exception e) {
+            caseToTest.addLog("(Error #04-05-3) Hubo un error inesperado");
+
             caseToTest.setStatus(Status.FAILED);
             return;
         }

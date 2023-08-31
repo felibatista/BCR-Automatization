@@ -25,10 +25,11 @@ Caso 6 (Positivo):
     2. En el formulario abierto escribir el “Email” en la sección de “Email, teléfono o usuario”
     3. Realizar el Captcha en caso de ser solicitado.
     4. Hacer click en el botón de “Continuar” para seguir el proceso.
-
     Resultados esperados: Se debería abrir un nuevo formulario para introducir la contraseña.
     Condiciones posteriores: N/A
+
  */
+
 public class US02Case06 {
     public static void run(){
         Case caseToTest = new Case(
@@ -38,8 +39,10 @@ public class US02Case06 {
                 Status.NOT_EXECUTED
         );
 
-        //prevent to run if user is logged
+        Main.getDriver().get("https://www.mercadolibre.com.ar/");
+
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
+            caseToTest.addLog("(Error en PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
@@ -72,13 +75,15 @@ public class US02Case06 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            //check if password input is present, if not, the email is not registered
-            Element.PASSWORD_INPUT.getElement();
-        } catch (NoSuchElementException e) {
-            caseToTest.setStatus(Status.BLOCKED);
-            return;
+            try {
+                Element.PASSWORD_INPUT.getElement();
+            } catch (NoSuchElementException e) {
+                caseToTest.addLog("(Error #02-06-1) No se pudo encontrar el campo de contraseña");
+                caseToTest.setStatus(Status.FAILED);
+                return;
+            }
         } catch (Exception e) {
-            e.printStackTrace();
+            caseToTest.addLog("(Error #02-06-2) Hubo un error inesperado");
             caseToTest.setStatus(Status.FAILED);
             return;
         }
