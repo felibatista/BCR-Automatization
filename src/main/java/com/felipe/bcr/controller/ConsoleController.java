@@ -15,12 +15,14 @@ public class ConsoleController {
         scanner = new Scanner(System.in);
         boolean isRunning = true;
 
-        System.out.println("Bienvenido al sistema de pruebas de Mercado Libre, " +
-                "antes de comenzar le pedimos que ingrese sus credenciales para las pruebas que lo necesiten:");
-        System.out.println("Ingrese su email de Mercado Libre: ");
+        System.out.println("""
+                Bienvenido al sistema de pruebas de Mercado Libre.\s
+                Antes de comenzar le pedimos que ingrese sus credenciales para las pruebas que lo necesiten:\s
+                (Si no desea poner sus credenciales, escriba cualquier cosa, pero tenga en cuenta que algunas pruebas no funcionarán)""");
+        System.out.println("-> Ingrese su email de Mercado Libre: ");
         Main.setEmail(scanner.next());
 
-        System.out.println("Ingrese su contraseña de Mercado Libre: ");
+        System.out.println("-> Ingrese su contraseña de Mercado Libre: ");
         Main.setPassword(scanner.next());
 
         while (isRunning){

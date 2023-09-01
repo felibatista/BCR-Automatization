@@ -23,18 +23,32 @@ La forma en la que Mercado Libre maqueta las páginas cambia según el tamaño d
 
 ## Requerimientos
 
-Para poder correr de manera correcta los casos, se recomienda el uso de lo siguiente:
-- Java 17 o superior.
-- Google Chrome en una versión estable.
-- Windows 10 o superior.
-- Resolución de 1920x1080.
+Para poder correr de manera correcta los casos, se recomienda el uso de lo siguiente (no fue testeado en otras opciones por falta de tiempo):
+- Java 17 o superior
+- Google Chrome en una versión estable
+- Windows 10 o superior
+- Resolución de 1920x1080
 
 
 
-## Quickstart - Como usarlo
+## Quickstart - Como compilar la aplicación
 
-Paso 1️⃣:
+Paso 1️⃣: Descargue el repositorio y abralo con su IDE favorito.
+```
+git clone https://github.com/felibatista/BCR-Automatization.git
+```
 
+Paso 2️⃣: Ir hacia Maven -> Lifecycle -> Package. Esto creará un .jar dentro de la carpeta /target en el directorio donde tiene el proyecto.
 
+Paso 3️⃣: Crea un .bat con la siguiente información:
+```
+java -jar TestCases-BCR-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+pause
+```
+
+Paso 4️⃣: Abra el .bat creado recientemente y siga las instrucciones de la consola.
+
+Paso 5️⃣: ¡Comenzar a TESTEAR 😎!
 
 
