@@ -9,6 +9,8 @@ import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Scanner;
+
 public class Main {
     private static WebDriver driver;
     private static LogginController logginController;
@@ -54,5 +56,32 @@ public class Main {
 
     public static FavoriteController getFavoriteController() {
         return favoriteController;
+    }
+
+    public void startConsoleMenu(){
+        Scanner scanner = new Scanner(System.in);
+        int option = 1;
+        while (option!=4){
+            try {
+                option = scanner.nextInt();
+                switch (option){
+                    case 1: option1(); break;
+                    case 4: exit(0);
+                }
+            }
+            catch (Exception ex){
+                System.out.println("Please enter an integer value between 1 and 4");
+                scanner.next();
+            }
+        }
+    }
+
+    public void option1(){
+        System.out.println("Option 1 selected");
+    }
+
+    public void exit(int status){
+        System.out.println("Exiting...");
+        System.exit(status);
     }
 }

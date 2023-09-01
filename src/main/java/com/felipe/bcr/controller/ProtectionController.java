@@ -8,6 +8,7 @@ import java.time.Duration;
 
 public class ProtectionController {
     public static boolean hasProtection() {
+        //TODO: CAMBIAR ESTO
         // #\:R5a9\:
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
