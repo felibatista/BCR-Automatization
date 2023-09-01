@@ -35,13 +35,14 @@ public class US04Case05 {
                 Status.NOT_EXECUTED
         );
 
+        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+
         if (!Main.getLogginController().checkIsLoggedWithJoinButton()) {
             caseToTest.addLog("(Error de PRE-CONDICIÓN) El usuario está logueado");
             caseToTest.setStatus(Status.PRE_CONDITION_FAILED);
             return;
         }
 
-        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));

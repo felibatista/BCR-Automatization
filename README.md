@@ -23,11 +23,11 @@ La forma en la que Mercado Libre maqueta las páginas cambia según el tamaño d
 
 ## Requerimientos
 
-Para poder correr de manera correcta los casos, se recomienda el uso de lo siguiente (no fue testeado en otras opciones por falta de tiempo):
-- Java 17 o superior
-- Google Chrome en una versión estable
-- Windows 10 o superior
-- Resolución de 1920x1080
+Para poder correr de manera correcta los casos, se recomienda el uso de lo siguiente:
+- Java 17 o superior.
+- Google Chrome en una versión estable.
+- Windows 10 o superior.
+- Resolución de 1920x1080.
 
 
 

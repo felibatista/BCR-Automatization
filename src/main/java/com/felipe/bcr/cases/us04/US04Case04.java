@@ -35,11 +35,12 @@ public class US04Case04 {
                 Status.NOT_EXECUTED
         );
 
+        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
+
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
-            Main.getLogginController().runAutoLogIn("hellojavaa@gmail.com", "Carbia1143");
+            Main.getLogginController().runAutoLogIn("TEST", "TEST");
         }
 
-        Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");
 
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));

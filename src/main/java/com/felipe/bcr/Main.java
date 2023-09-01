@@ -2,6 +2,7 @@ package com.felipe.bcr;
 
 import com.felipe.bcr.cases.us02.*;
 import com.felipe.bcr.cases.us04.*;
+import com.felipe.bcr.controller.ConsoleController;
 import com.felipe.bcr.controller.FavoriteController;
 import com.felipe.bcr.controller.LogginController;
 import com.felipe.bcr.entitys.Case;
@@ -15,6 +16,7 @@ public class Main {
     private static WebDriver driver;
     private static LogginController logginController;
     private static FavoriteController favoriteController;
+    private static ConsoleController consoleController;
 
     public static void main(String[] args) {
         System.out.println("Iniciando controladores...");
@@ -22,6 +24,7 @@ public class Main {
         driver = new ChromeDriver();
         logginController = new LogginController();
         favoriteController = new FavoriteController();
+        consoleController = new ConsoleController();
 
         Case.generateHashMaps();
 
@@ -32,6 +35,9 @@ public class Main {
         String title = driver.getTitle();
         System.out.println("Chrome: " + title);
 
+        getConsoleController().startConsoleMenu();
+
+        /*
         System.out.println("Running case 9...");
         US04Case09.run();
         Case case1 = Case.getCaseByUserStoryAndID(UserStory.US04, 9);
@@ -39,15 +45,13 @@ public class Main {
         System.out.println("Case 9 finished.");
         System.out.println(case1.getLogsAsString());
 
+         */
+
         //driver.close();
     }
 
     public static WebDriver getDriver() {
         return driver;
-    }
-
-    public static void setDriver(WebDriver driver) {
-        Main.driver = driver;
     }
 
     public static LogginController getLogginController() {
@@ -58,30 +62,7 @@ public class Main {
         return favoriteController;
     }
 
-    public void startConsoleMenu(){
-        Scanner scanner = new Scanner(System.in);
-        int option = 1;
-        while (option!=4){
-            try {
-                option = scanner.nextInt();
-                switch (option){
-                    case 1: option1(); break;
-                    case 4: exit(0);
-                }
-            }
-            catch (Exception ex){
-                System.out.println("Please enter an integer value between 1 and 4");
-                scanner.next();
-            }
-        }
-    }
-
-    public void option1(){
-        System.out.println("Option 1 selected");
-    }
-
-    public void exit(int status){
-        System.out.println("Exiting...");
-        System.exit(status);
+    public static ConsoleController getConsoleController() {
+        return consoleController;
     }
 }
