@@ -2,6 +2,7 @@ package com.felipe.bcr.controller;
 
 import com.felipe.bcr.Main;
 import com.felipe.bcr.cases.us04.*;
+import com.felipe.bcr.cases.us02.*;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.UserStory;
 
@@ -84,6 +85,53 @@ public class ConsoleController {
     private void chooseCaseFromUserStory02(){
         System.out.println("Ingresa el caso de prueba que deseas correr: ");
 
+        System.out.println("1. US02Case01");
+        System.out.println("2. US02Case02");
+        System.out.println("3. US02Case03");
+        System.out.println("4. US02Case04");
+        System.out.println("5. US02Case05");
+        System.out.println("6. US02Case06");
+        System.out.println("7. US02Case07");
+        System.out.println("8. US02Case08");
+        System.out.println("9. US02Case09");
+        System.out.println("10. US02Case10");
+        System.out.println("11. US02Case11");
+        System.out.println("12. US02Case12");
+
+        try{
+            int caseSelected = scanner.nextInt();
+            switch (caseSelected){
+                case 1 -> US02Case01.run();
+                case 2 -> US02Case02.run();
+                case 3 -> US02Case03.run();
+                case 4 -> US02Case04.run();
+                case 5 -> US02Case05.run();
+                case 6 -> US02Case06.run();
+                case 7 -> US02Case07.run();
+                case 8 -> US02Case08.run();
+                case 9 -> US02Case09.run();
+                case 10 -> US02Case10.run();
+                case 11 -> US02Case11.run();
+                case 12 -> US02Case12.run();
+
+                default -> {
+                    System.out.println("Ingrese un valor entre 1 y 12");
+                    scanner.next();
+                }
+            }
+
+            if (caseSelected >= 1 && caseSelected <= 12){
+                System.out.println("Caso de prueba finalizado correctamente");
+
+                Case caseToTest = Case.getCaseByUserStoryAndID(UserStory.US04, caseSelected);
+                caseToTest.end();
+                System.out.println(caseToTest.getLogsAsString());
+            }
+
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
     };
 
     private void chooseCaseFromUserStory03(){

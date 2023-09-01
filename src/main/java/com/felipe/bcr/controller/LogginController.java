@@ -63,7 +63,7 @@ public class LogginController {
 
         try {
             Element.CONTINUE_BUTTON.getElement().click();
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             System.out.println("No se encontró el botón de continuar, reescribiendo el usuario...");
 
             Element.USERNAME_INPUT.getElement().sendKeys(Keys.CONTROL + "a");
@@ -73,7 +73,7 @@ public class LogginController {
 
             Element.USERNAME_INPUT.getElement().sendKeys(username);
 
-            return;
+            Element.CONTINUE_BUTTON.getElement().click();
         }
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
