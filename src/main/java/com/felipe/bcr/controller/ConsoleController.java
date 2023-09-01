@@ -131,8 +131,7 @@ public class ConsoleController {
 
 
         }catch (Exception ex){
-            System.out.println("Ingrese un valor entre 1 y 10");
-            scanner.next();
+            ex.printStackTrace();
         }
     };
 }

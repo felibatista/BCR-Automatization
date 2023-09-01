@@ -3,6 +3,7 @@ package com.felipe.bcr.controller;
 import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Element;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
@@ -57,9 +58,18 @@ public class LogginController {
 
         Element.USERNAME_INPUT.getElement().sendKeys(username);
 
-        Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+        Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+        
+        try {
+            Element.CONTINUE_BUTTON.getElement().click();
+        } catch (NoSuchElementException e) {
+            System.out.println("No se encontró el botón de continuar, reescribiendo el usuario...");
 
-        Element.CONTINUE_BUTTON.getElement().click();
+            Element.USERNAME_INPUT.getElement().clear();
+            Element.USERNAME_INPUT.getElement().sendKeys(username);
+
+            return;
+        }
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 

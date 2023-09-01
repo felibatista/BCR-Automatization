@@ -43,7 +43,6 @@ public class US04Case05 {
             return;
         }
 
-
         try {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
