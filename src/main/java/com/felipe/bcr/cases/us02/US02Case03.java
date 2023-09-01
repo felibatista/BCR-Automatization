@@ -39,7 +39,7 @@ public class US02Case03 {
         );
 
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
-            Main.getLogginController().runAutoLogIn("TEST", "TEST");
+            Main.getLogginController().runAutoLogIn(Main.getEmail(), Main.getPassword());
         }
 
         Main.getDriver().get("https://www.mercadolibre.com.ar/ofertas#nav-header");

@@ -35,7 +35,7 @@ public class US04Case08 {
         );
 
         if (Main.getLogginController().checkIsLoggedWithJoinButton()) {
-            Main.getLogginController().runAutoLogIn("TEST", "TEST");
+            Main.getLogginController().runAutoLogIn(Main.getEmail(), Main.getPassword());
         }
 
         if (Main.getFavoriteController().getFavoritesUserCount() == 0) {

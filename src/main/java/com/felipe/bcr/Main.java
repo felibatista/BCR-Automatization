@@ -18,6 +18,9 @@ public class Main {
     private static FavoriteController favoriteController;
     private static ConsoleController consoleController;
 
+    private static String email;
+    private static String password;
+
     public static void main(String[] args) {
         System.out.println("Iniciando controladores...");
 
@@ -25,6 +28,9 @@ public class Main {
         logginController = new LogginController();
         favoriteController = new FavoriteController();
         consoleController = new ConsoleController();
+
+        email = "";
+        password = "";
 
         Case.generateHashMaps();
 
@@ -64,5 +70,21 @@ public class Main {
 
     public static ConsoleController getConsoleController() {
         return consoleController;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+
+    public static String getPassword() {
+        return password;
+    }
+
+    public static void setEmail(String email) {
+        Main.email = email;
+    }
+
+    public static void setPassword(String password) {
+        Main.password = password;
     }
 }

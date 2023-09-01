@@ -1,5 +1,6 @@
 package com.felipe.bcr.controller;
 
+import com.felipe.bcr.Main;
 import com.felipe.bcr.cases.us04.*;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.UserStory;
@@ -12,6 +13,14 @@ public class ConsoleController {
     public void startConsoleMenu(){
         scanner = new Scanner(System.in);
         boolean isRunning = true;
+
+        System.out.println("Bienvenido al sistema de pruebas de Mercado Libre, " +
+                "antes de comenzar le pedimos que ingrese sus credenciales para las pruebas que lo necesiten:");
+        System.out.println("Ingrese su email de Mercado Libre: ");
+        Main.setEmail(scanner.next());
+
+        System.out.println("Ingrese su contraseña de Mercado Libre: ");
+        Main.setPassword(scanner.next());
 
         while (isRunning){
             try {
@@ -94,39 +103,15 @@ public class ConsoleController {
         try{
             int caseSelected = scanner.nextInt();
             switch (caseSelected){
-                case 1 -> {
-                    US04Case01.run();
-                }
-
-                case 2 -> {
-                    US04Case02.run();
-                }
-
-                case 3, 6 -> {
-                    System.out.println("Este caso no se encuentra disponible");
-                }
-
-                case 4 -> {
-                    US04Case04.run();
-                }
-
+                case 1 -> US04Case01.run();
+                case 2 -> US04Case02.run();
+                case 3, 6 -> System.out.println("Este caso no se encuentra disponible");
+                case 4 -> US04Case04.run();
                 case 5 -> US04Case05.run();
-
-                case 7 -> {
-                    US04Case07.run();
-                }
-
-                case 8 -> {
-                    US04Case08.run();
-                }
-
-                case 9 -> {
-                    US04Case09.run();
-                }
-
-                case 10 -> {
-                    US04Case10.run();
-                }
+                case 7 -> US04Case07.run();
+                case 8 -> US04Case08.run();
+                case 9 -> US04Case09.run();
+                case 10 -> US04Case10.run();
 
                 default -> {
                     System.out.println("Ingrese un valor entre 1 y 10");
