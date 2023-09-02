@@ -4,12 +4,11 @@ import com.felipe.bcr.Main;
 import com.felipe.bcr.entitys.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
-public class LogginController {
+public class LoginController {
     //span[contains(@class, 'nav-header-avatar-user')]
 
     public boolean pageHasNavbar(){
@@ -97,8 +96,20 @@ public class LogginController {
 
         Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-        WebElement logginButton = Main.getDriver().findElement(By.cssSelector("#action-complete"));
-        logginButton.click();
+        try {
+           Main.getDriver().findElement(By.cssSelector("#action-complete")).click();
+        } catch (Exception e) {
+            System.out.println("No se encontró el botón de continuar, reescribiendo la contraseña...");
+
+            Element.PASSWORD_INPUT.getElement().sendKeys(Keys.CONTROL + "a");
+            Element.PASSWORD_INPUT.getElement().sendKeys(Keys.DELETE);
+
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+
+            Element.PASSWORD_INPUT.getElement().sendKeys(username);
+
+            Main.getDriver().findElement(By.cssSelector("#action-complete")).click();
+        }
 
         Element.PASSWORD_INPUT.getElement().sendKeys(password);
 

@@ -34,7 +34,7 @@ public class US04Case09 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                9,
+                409,
                 "Validar la cantidad de productos en la lista desplegable de la sección de favoritos de la parte superior de la pantalla",
                 Status.NOT_EXECUTED
         );

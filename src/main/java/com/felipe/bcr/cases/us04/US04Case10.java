@@ -32,7 +32,7 @@ public class US04Case10 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                10,
+                410,
                 "Validar que un producto agregado a favoritos se muestre en el menú desplegable “Favoritos”, de la parte superior de la pantalla (ref. imagen-nav-fav)",
                 Status.NOT_EXECUTED
         );

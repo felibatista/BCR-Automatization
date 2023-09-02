@@ -35,7 +35,7 @@ public class US02Case09 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                9,
+                209,
                 "Validar que no se puede iniciar sesión con nickname inexistente en la base de datos",
                 Status.NOT_EXECUTED
         );

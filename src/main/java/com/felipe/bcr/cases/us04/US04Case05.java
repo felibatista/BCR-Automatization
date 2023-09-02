@@ -30,7 +30,7 @@ public class US04Case05 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                5,
+                405,
                 "Validar que un producto no se pueda agregar a favoritos si el usuario no está logueado",
                 Status.NOT_EXECUTED
         );

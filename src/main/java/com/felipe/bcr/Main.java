@@ -1,20 +1,15 @@
 package com.felipe.bcr;
 
-import com.felipe.bcr.cases.us02.*;
-import com.felipe.bcr.cases.us04.*;
 import com.felipe.bcr.controller.ConsoleController;
 import com.felipe.bcr.controller.FavoriteController;
-import com.felipe.bcr.controller.LogginController;
+import com.felipe.bcr.controller.LoginController;
 import com.felipe.bcr.entitys.Case;
-import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.Scanner;
-
 public class Main {
     private static WebDriver driver;
-    private static LogginController logginController;
+    private static LoginController loginController;
     private static FavoriteController favoriteController;
     private static ConsoleController consoleController;
 
@@ -25,7 +20,7 @@ public class Main {
         System.out.println("Iniciando controladores...");
 
         driver = new ChromeDriver();
-        logginController = new LogginController();
+        loginController = new LoginController();
         favoriteController = new FavoriteController();
         consoleController = new ConsoleController();
 
@@ -60,8 +55,8 @@ public class Main {
         return driver;
     }
 
-    public static LogginController getLogginController() {
-        return logginController;
+    public static LoginController getLogginController() {
+        return loginController;
     }
 
     public static FavoriteController getFavoriteController() {

@@ -1,15 +1,12 @@
 package com.felipe.bcr.cases.us02;
 
 import com.felipe.bcr.Main;
-import com.felipe.bcr.controller.CaptchaController;
-import com.felipe.bcr.controller.LogginController;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.entitys.Status;
 import com.felipe.bcr.entitys.UserStory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 
@@ -44,7 +41,7 @@ public class US02Case10 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                10,
+                210,
                 "Validar que se pueda iniciar sesión con una combinación de nickname y contraseña correctos",
                 Status.NOT_EXECUTED
         );

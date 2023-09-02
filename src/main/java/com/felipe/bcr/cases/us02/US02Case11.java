@@ -38,7 +38,7 @@ public class US02Case11 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                11,
+                211,
                 "Validar que no se puede iniciar sesión con una combinación de email y contraseña inválidos",
                 Status.NOT_EXECUTED
         );

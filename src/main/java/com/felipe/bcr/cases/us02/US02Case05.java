@@ -31,7 +31,7 @@ public class US02Case05 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                5,
+                205,
                 "Validar que se abra una nueva pantalla solicitando los dos (2) campos obligatorios para iniciar sesión",
                 Status.NOT_EXECUTED
         );

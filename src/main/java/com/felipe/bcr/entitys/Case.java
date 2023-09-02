@@ -27,6 +27,8 @@ public class Case {
     Instant finish;
 
     public Case(UserStory userStory, int id, String description, Status status) {
+        System.out.println("Ejecutando caso de prueba #" + id + ": " + description);
+
         this.userStory = userStory;
         this.id = id;
         this.description = description;
@@ -73,7 +75,7 @@ public class Case {
     }
 
     public static Case getCaseByUserStoryAndID(UserStory userStory, int id){
-        return cases.get(userStory).get(id);
+        return cases.get(userStory).getOrDefault(id, null);
     }
 
     public UserStory getUserHistory() {
@@ -177,14 +179,6 @@ public class Case {
 
     @Override
     public String toString() {
-        return "Case{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", preCondition=" + preCondition +
-                ", postCondition=" + postCondition +
-                ", steps=" + steps +
-                ", expectedResults=" + expectedResults +
-                ", status=" + status +
-                '}';
+        return "[Caso #" + this.getId() + "] " + this.getDescription() + " - " + this.getStatus() + " - " + this.getFormatTimeElapsed();
     }
 }

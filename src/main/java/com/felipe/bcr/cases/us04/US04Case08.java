@@ -29,7 +29,7 @@ public class US04Case08 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                8,
+                408,
                 "Validar que en la sección de favoritos el usuario pueda entrar directamente a un producto marcado haciendo click en él",
                 Status.NOT_EXECUTED
         );

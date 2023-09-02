@@ -30,7 +30,7 @@ public class US02Case02 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                2,
+                202,
                 "Validar si al intentar comprar un producto requiere autenticación",
                 Status.NOT_EXECUTED
         );
@@ -51,7 +51,17 @@ public class US02Case02 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
-            Element.BUY_BUTTON.getElement().click();
+            try {
+                Element.BUY_BUTTON_ONE.getElement().click();
+            } catch (Exception e){
+                try {
+                    Element.BUY_BUTTON_TWO.getElement().click();
+                } catch (Exception e2) {
+                    caseToTest.addLog("(Error #02-02-0) No se pudo encontrar el botón de compra");
+                    caseToTest.setStatus(Status.BLOCKED);
+                    return;
+                }
+            }
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 

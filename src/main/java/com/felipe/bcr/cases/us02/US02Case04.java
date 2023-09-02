@@ -32,7 +32,7 @@ public class US02Case04 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                4,
+                204,
                 "Validar que se pueda iniciar sesión en la página de detalles de un producto",
                 Status.NOT_EXECUTED
         );
@@ -52,16 +52,16 @@ public class US02Case04 {
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Element.BUY_BUTTON.getElement().click();
-
-            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
             try {
-                Element.USERNAME_INPUT.getElement();
-            } catch (NoSuchElementException e) {
-                caseToTest.addLog("(Error #02-04-1) No se pudo encontrar el elemento de ingreso de usuario");
-                caseToTest.setStatus(Status.BLOCKED);
-
-                return;
+                Element.BUY_BUTTON_ONE.getElement().click();
+            } catch (Exception e){
+                try {
+                    Element.BUY_BUTTON_TWO.getElement().click();
+                } catch (Exception e2) {
+                    caseToTest.addLog("(Error #02-01-0) No se pudo encontrar el botón de compra");
+                    caseToTest.setStatus(Status.BLOCKED);
+                    return;
+                }
             }
         } catch (Exception e) {
             caseToTest.addLog("(Error #02-04-2) Hubo un error inesperado \n[" + e.getMessage() + "]");

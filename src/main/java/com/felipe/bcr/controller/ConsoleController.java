@@ -50,7 +50,24 @@ public class ConsoleController {
                         }
                     }
                     case 2 -> {
+                        System.out.println("Estado de los casos:");
+                        for (UserStory story : UserStory.values()) {
+                            System.out.println("----- Historia de usuario " + story.toString() + " -----");
+
+                            for (int start = (story.getStartCasesID() + 1); start <= (story.getStartCasesID() + story.getMaxCases()); start++) {
+                                Case caseToTest = Case.getCaseByUserStoryAndID(story, start);
+
+                                if (caseToTest != null){
+                                    System.out.println(caseToTest.toString());
+                                }else{
+                                    System.out.println("[Caso #" + start + "] No se ha corrido este caso de prueba aún.");
+                                }
+                            }
+                        }
+                    }
+                    case 3 -> {
                         System.out.println("Bye!");
+                        Main.getDriver().quit();
                         isRunning = false;
                     }
                 }
@@ -64,7 +81,8 @@ public class ConsoleController {
     private int chooseOption(){
         System.out.println("Ingresa una opcion: ");
         System.out.println("1. Correr un caso de prueba de manera individual");
-        System.out.println("2. Cerrar la aplicacion");
+        System.out.println("2. Ver el estado del casos probados en esta sesión");
+        System.out.println("3. Cerrar la aplicacion");
 
         return scanner.nextInt();
     };
@@ -125,14 +143,15 @@ public class ConsoleController {
             if (caseSelected >= 1 && caseSelected <= 12){
                 System.out.println("Caso de prueba finalizado correctamente");
 
-                Case caseToTest = Case.getCaseByUserStoryAndID(UserStory.US04, caseSelected);
+                Case caseToTest = Case.getCaseByUserStoryAndID(UserStory.US02, UserStory.US02.getStartCasesID() + caseSelected);
+                System.out.println("Logs del caso de prueba #" + caseToTest.getId() +": ");
                 caseToTest.end();
                 System.out.println(caseToTest.getLogsAsString());
             }
 
 
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
     };
 
@@ -173,7 +192,7 @@ public class ConsoleController {
                 if (caseSelected != 3 && caseSelected != 6){
                     System.out.println("Caso de prueba finalizado correctamente");
 
-                    Case caseToTest = Case.getCaseByUserStoryAndID(UserStory.US04, caseSelected);
+                    Case caseToTest = Case.getCaseByUserStoryAndID(UserStory.US04, UserStory.US04.getStartCasesID() + caseSelected);
                     caseToTest.end();
                     System.out.println(caseToTest.getLogsAsString());
                 }
@@ -181,7 +200,7 @@ public class ConsoleController {
 
 
         }catch (Exception ex){
-            ex.printStackTrace();
+
         }
     };
 }

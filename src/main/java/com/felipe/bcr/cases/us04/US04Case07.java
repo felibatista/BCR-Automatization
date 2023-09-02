@@ -35,7 +35,7 @@ public class US04Case07 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                7,
+                407,
                 "Validar la opción de ver todos los productos que fueron marcados como favoritos",
                 Status.NOT_EXECUTED
         );

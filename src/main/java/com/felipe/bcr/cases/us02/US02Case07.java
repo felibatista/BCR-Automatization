@@ -35,7 +35,7 @@ public class US02Case07 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US02,
-                7,
+                207,
                 "Validar que no se puede iniciar sesión con correo electrónico inexistente en la base de datos",
                 Status.NOT_EXECUTED
         );

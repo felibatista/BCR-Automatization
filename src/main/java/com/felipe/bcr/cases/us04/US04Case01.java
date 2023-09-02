@@ -28,7 +28,7 @@ public class US04Case01 {
     public static void run(){
         Case caseToTest = new Case(
                 UserStory.US04,
-                1,
+                401,
                 "Validar que un producto de la sección “Moda” tenga la opción de ser agregado a favoritos",
                 Status.NOT_EXECUTED
         );

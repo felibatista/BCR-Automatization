@@ -1,7 +1,6 @@
-package com.felipe.bcr.cases.us02;
+package com.felipe.bcr.cases.us01;
 
 import com.felipe.bcr.Main;
-import com.felipe.bcr.controller.CaptchaController;
 import com.felipe.bcr.entitys.Case;
 import com.felipe.bcr.entitys.Element;
 import com.felipe.bcr.entitys.Status;
@@ -12,27 +11,25 @@ import java.time.Duration;
 
 /*
 
-Caso 12:
-    ID: 012
-    Descripción: Validar que se muestre un mensaje de error al no ingresar ningún valor en el input del Email.
+Caso 1:
+    ID: 001
+    Descripción: Validar que se pueda iniciar sesión en la página principal.
     Pre-condiciones:
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas: N/A
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
-    2. Hacer click en el botón de “Iniciar sesión” o “Continuar” para completar el inicio.
-    Resultados esperados: Se debería mostrar un mensaje de error, pidiendo que introduzca algún valor.
+    Resultados esperados: Se debería abrir una nueva pantalla o pop-up con la opción para iniciar sesión.
     Condiciones posteriores: N/A
 
  */
-
-public class US02Case12 {
+public class US01Case01 {
     public static void run(){
         Case caseToTest = new Case(
-                UserStory.US02,
-                212,
-                "Validar que se muestre un mensaje de error al no ingresar ningún valor en el input del Email",
+                UserStory.US01,
+                1,
+                "Validar que se pueda iniciar sesión en la página principal",
                 Status.NOT_EXECUTED
         );
 
@@ -45,23 +42,21 @@ public class US02Case12 {
         }
 
         try {
+            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
+
             Element.JOIN_BUTTON.getElement().click();
 
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
-            Element.USERNAME_INPUT.getElement().sendKeys(" ");
-
-            Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
-
-            try {
-                Element.CONTINUE_BUTTON.getElement().click();
-            } catch (Exception e) {
-                caseToTest.addLog("(Error #02-12-1) No se pudo hacer click en el botón para continuar");
-                caseToTest.setStatus(Status.FAILED);
+            try{
+                Element.USERNAME_INPUT.getElement();
+            } catch (NoSuchElementException e) {
+                caseToTest.addLog("(Error #02-01-1) No se pudo encontrar el elemento de ingreso de usuario");
+                caseToTest.setStatus(Status.BLOCKED);
                 return;
             }
         } catch (Exception e) {
-            caseToTest.addLog("(Error #02-12-2) Hubo un error inesperado \n[" + e.getMessage() + "]");
+            caseToTest.addLog("(Error #02-01-2) Hubo un error inesperado \n[" + e.getMessage() + "]");
             caseToTest.setStatus(Status.FAILED);
             return;
         }

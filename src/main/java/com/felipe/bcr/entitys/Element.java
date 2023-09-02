@@ -21,9 +21,13 @@ public enum Element {
             "Se encuentra debajo del formulario de inicio de sesión",
             "/html/body/main/div/div[1]/div[2]/div/form/div[2]/button"),
 
-    BUY_BUTTON("Botón para comprar un producto",
+    BUY_BUTTON_ONE("Botón para comprar un producto [VERSIÓN 1]",
             "Se encuentra en la página de detalles de un producto",
             "/html/body/main/div[2]/div[4]/div[1]/div[2]/div/div[1]/form/div[5]/div/button[1]"),
+
+    BUY_BUTTON_TWO("Botón para comprar un producto [VERSIÓN 2]",
+            "Se encuentra en la página de detalles de un producto",
+            "/html/body/main/div[2]/div[4]/div[1]/div[2]/div/div[1]/form/div[6]/div/button[1]"),
 
     FAV_BUTTON_ONE("Corazón que permite agregar a favoritos un producto [VERSIÓN 1]",
             "Se encuentra en todos los productos",
