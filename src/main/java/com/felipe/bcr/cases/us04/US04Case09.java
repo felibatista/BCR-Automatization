@@ -21,7 +21,7 @@ Caso 9:
     Pre-condiciones:
     1. Estar logueado.
     2. Abrir: https://www.mercadolibre.com.ar/
-    3. Tener mínimo quince (15) productos en favoritos.
+    3. Tener mínimo trece (13) productos en favoritos.
     Entradas: N/A
     Pasos:
     1. Hacer click en el botón de “Favoritos” de la parte superior de la pantalla (ref. imagen-nav-fav) y esperar que se despliegue el menú.
@@ -43,8 +43,8 @@ public class US04Case09 {
             Main.getLogginController().runAutoLogIn(Main.getEmail(), Main.getPassword());
         }
 
-        if (Main.getFavoriteController().getFavoritesUserCount() < 15) {
-            System.out.println("(Error de PRE-CONDICIÓN): Se debe tener al quince (15) productos en favoritos para correr este caso de prueba");
+        if (Main.getFavoriteController().getFavoritesUserCount() < 13) {
+            System.out.println("(Error de PRE-CONDICIÓN): Se debe tener al trece (13) productos en favoritos para correr este caso de prueba");
             caseToTest.setStatus(Status.BLOCKED);
             return;
         }
