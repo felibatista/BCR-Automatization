@@ -53,15 +53,11 @@ public class US02Case04 {
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             try {
-                Element.BUY_BUTTON_ONE.getElement().click();
+                Element.JOIN_BUTTON.getElement();
             } catch (Exception e){
-                try {
-                    Element.BUY_BUTTON_TWO.getElement().click();
-                } catch (Exception e2) {
-                    caseToTest.addLog("(Error #02-01-0) No se pudo encontrar el botón de compra");
-                    caseToTest.setStatus(Status.BLOCKED);
-                    return;
-                }
+                caseToTest.addLog("(Error #02-01-0) No se pudo encontrar el botón de inicio de sesión");
+                caseToTest.setStatus(Status.BLOCKED);
+                return;
             }
         } catch (Exception e) {
             caseToTest.addLog("(Error #02-04-2) Hubo un error inesperado \n[" + e.getMessage() + "]");
