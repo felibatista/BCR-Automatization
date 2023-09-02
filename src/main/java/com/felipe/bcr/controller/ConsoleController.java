@@ -1,6 +1,8 @@
 package com.felipe.bcr.controller;
 
 import com.felipe.bcr.Main;
+import com.felipe.bcr.cases.us01.US01Case01;
+import com.felipe.bcr.cases.us01.US01Case02;
 import com.felipe.bcr.cases.us04.*;
 import com.felipe.bcr.cases.us02.*;
 import com.felipe.bcr.entitys.Case;
@@ -100,6 +102,32 @@ public class ConsoleController {
     private void chooseCaseFromUserStory01(){
         System.out.println("Ingresa el caso de prueba que deseas correr: ");
 
+        System.out.println("1. US01Case01");
+        System.out.println("2. US01Case02");
+
+        try{
+            int caseSelected = scanner.nextInt();
+            switch (caseSelected){
+                case 1 -> US01Case01.run();
+                case 2 -> US01Case02.run();
+
+                default -> {
+                    System.out.println("Ingrese un valor entre 1 y 2");
+                    scanner.next();
+                }
+            }
+
+            if (caseSelected >= 1 && caseSelected <= 2){
+                System.out.println("Caso de prueba finalizado correctamente");
+
+                Case caseToTest = Case.getCaseByUserStoryAndID(UserStory.US01, UserStory.US01.getStartCasesID() + caseSelected);
+                System.out.println("Logs del caso de prueba #" + caseToTest.getId() +": ");
+                caseToTest.end();
+                System.out.println(caseToTest.getLogsAsString());
+            }
+        }catch (Exception ex){
+
+        }
     };
 
     private void chooseCaseFromUserStory02(){

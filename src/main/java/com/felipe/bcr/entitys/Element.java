@@ -9,6 +9,10 @@ public enum Element {
             "Se encuentra en la parte superior de la pantalla, donde está el navbar",
             "//a[contains(@data-link-id, 'login')]"),
 
+    REGISTER_BUTTON("Botón para registrarse",
+            "Se encuentra en la parte superior de la pantalla, donde está el navbar",
+            "//a[contains(@data-link-id, 'registration')]"),
+
     USERNAME_INPUT("Input para el Usuario / Email",
             "Se encuentra en el primer formulario de inicio de sesión",
             "//input[@id='user_id']"),
