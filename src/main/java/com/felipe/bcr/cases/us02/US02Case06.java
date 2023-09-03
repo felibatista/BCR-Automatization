@@ -19,7 +19,7 @@ Caso 6 (Positivo):
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas:
-    Email válido: “felipebcr@gmail.com”
+    Email válido: “hellojavaa@gmail.com”
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
     2. En el formulario abierto escribir el “Email” en la sección de “Email, teléfono o usuario”

@@ -19,8 +19,8 @@ Caso 10 (Positivo):
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas:
-    Nickname válido: “FelipeBCR”
-    Contraseña válida: “testcases01@”
+    Nickname válido:
+    Contraseña válida:
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
     2. En el formulario abierto escribir el “Nickname” en la sección de “Email, teléfono o usuario”
@@ -53,7 +53,7 @@ public class US02Case10 {
         }
 
         try {
-            Main.getLogginController().runAutoLogIn("TEST", "TEST");
+            Main.getLogginController().runAutoLogIn(Main.getEmail(), Main.getPassword());
             Main.getDriver().manage().timeouts().implicitlyWait(Duration.ofMillis(1000));
 
             /*

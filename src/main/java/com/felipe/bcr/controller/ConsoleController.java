@@ -74,7 +74,7 @@ public class ConsoleController {
                     }
                 }
             } catch (Exception ex){
-                System.out.println("Ingrese un valor valor entre 1 y 2");
+                System.out.println("Ingrese un valor valor entre 1 y 3");
                 scanner.next();
             }
         }

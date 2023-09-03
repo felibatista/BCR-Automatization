@@ -21,7 +21,7 @@ Caso 11 (Negativo):
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas:
-    Email válido: “felipebcr@gmail.com”
+    Email válido: “hellojavaa@gmail.com”
     Contraseña inválida: “abscjsaedf”
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.

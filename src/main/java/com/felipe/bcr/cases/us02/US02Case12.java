@@ -57,7 +57,7 @@ public class US02Case12 {
                 Element.CONTINUE_BUTTON.getElement().click();
             } catch (Exception e) {
                 caseToTest.addLog("(Error #02-12-1) No se pudo hacer click en el botón para continuar");
-                caseToTest.setStatus(Status.FAILED);
+                caseToTest.setStatus(Status.BLOCKED);
                 return;
             }
         } catch (Exception e) {

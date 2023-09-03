@@ -20,7 +20,7 @@ Caso 9 (Negativo):
     1. Abrir: https://www.mercadolibre.com.ar/
     2. No estar logueado.
     Entradas:
-    Nickname inválido: “asdasdasdasdFF”
+    Nickname inválido: “asdasdasdasdf”
     Pasos:
     1. Hacer click en el botón “Ingresar” de la parte superior de la pantalla.
     2. En el formulario abierto escribir el “Nickname” en la sección de “Email, teléfono o usuario”
