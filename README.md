@@ -9,8 +9,8 @@ de manera automática obteniendo un feedback al acabar cada uno, donde encontrar
 
 ## 📕 Documentación de las historias de usuario
 
-- [Historia de usuario N°1 - US01](https://docs.google.com/document/d/1dPA-8ajNyCeJwNzqIKviWvViocbpvKD6x3zPSLiabEg/edit?usp=sharing) \
-- [Historia de usuario N°2 - US02](https://docs.google.com/document/d/1SvC4JJbQDRDjAhgNqep5h-a2cxDugRIQSvKmdtzk24E/edit?usp=sharing) \
+- [Historia de usuario N°1 - US01](https://docs.google.com/document/d/1dPA-8ajNyCeJwNzqIKviWvViocbpvKD6x3zPSLiabEg/edit?usp=sharing) 
+- [Historia de usuario N°2 - US02](https://docs.google.com/document/d/1SvC4JJbQDRDjAhgNqep5h-a2cxDugRIQSvKmdtzk24E/edit?usp=sharing) 
 - [Historia de usuario N°3 - US04](https://docs.google.com/document/d/1edFOk6xzP8QK3FLASnd0HxHBA6rm88eaej3JK-mH4pg/edit?usp=sharing)
 
 
